@@ -188,6 +188,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
+    <ClInclude Include="Goods.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="MFC_Market.h" />
     <ClInclude Include="MFC_MarketDoc.h" />
@@ -197,6 +198,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Goods.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="MFC_Market.cpp" />
     <ClCompile Include="MFC_MarketDoc.cpp" />
@@ -225,6 +227,9 @@
     <Image Include="res\icon1.ico" />
     <Image Include="res\MFC_Market.ico" />
     <Image Include="res\MFC_MarketDoc.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="GoodsList.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

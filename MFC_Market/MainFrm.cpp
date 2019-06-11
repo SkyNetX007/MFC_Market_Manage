@@ -5,6 +5,7 @@
 #include "pch.h"
 #include "framework.h"
 #include "MFC_Market.h"
+#include "Goods.h"
 
 #include "MainFrm.h"
 
@@ -53,9 +54,15 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	}
 	m_wndStatusBar.SetIndicators(indicators, sizeof(indicators)/sizeof(UINT));
 
-	SetClassLong(m_hWnd, GCL_HICON, (LONG)AfxGetApp()->LoadIconW(IDI_APERTURE));
-
+	//主标题和图标
+	SetClassLong(m_hWnd, -14, (LONG)AfxGetApp()->LoadIconW(IDI_APERTURE));
 	SetTitle(TEXT("MFC_Market_Management"));
+
+	
+	GoodsList goodsStock;
+	goodsStock.ReadFile();
+
+	goodsStock.WriteFile();
 
 	return 0;
 }
