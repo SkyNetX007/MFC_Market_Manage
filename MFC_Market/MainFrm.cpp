@@ -36,6 +36,9 @@ static UINT indicators[] =
 CMainFrame::CMainFrame() noexcept
 {
 	// TODO: 在此添加成员初始化代码
+	GoodsList stock;
+	stock.ReadFile();
+	
 }
 
 CMainFrame::~CMainFrame()
@@ -54,16 +57,6 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	}
 	m_wndStatusBar.SetIndicators(indicators, sizeof(indicators)/sizeof(UINT));
 
-	//主标题和图标
-	SetClassLong(m_hWnd, -14, (LONG)AfxGetApp()->LoadIconW(IDI_APERTURE));
-	SetTitle(TEXT("MFC_Market_Management"));
-
-	
-	GoodsList goodsStock;
-	goodsStock.ReadFile();
-
-	goodsStock.WriteFile();
-
 	return 0;
 }
 
@@ -73,6 +66,10 @@ BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)
 		return FALSE;
 	// TODO: 在此处通过修改
 	//  CREATESTRUCT cs 来修改窗口类或样式
+
+	//主标题和图标
+	SetClassLong(m_hWnd, -14, (LONG)AfxGetApp()->LoadIconW(IDI_APERTURE));
+	SetTitle(TEXT("MFC_Market_Management"));
 
 	return TRUE;
 }

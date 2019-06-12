@@ -23,7 +23,6 @@ void GoodsList::WriteFile()
 {
 	FILE* file = fopen(_GOODS_LIST_FILE, "w+");
 	string tempsName, tempsID, tempsType;
-	list<Goods>::iterator cursor = content.begin();
 	Goods temp;
 	while (!content.empty())
 	{
@@ -31,8 +30,18 @@ void GoodsList::WriteFile()
 		tempsName = CStringA(temp.name), tempsID = CStringA(temp.ID), tempsType = CStringA(temp.type);
 		fprintf(file, "\n%s %s %s", tempsName.c_str(), tempsID.c_str(), tempsType.c_str());
 		fprintf(file, "\n%lf %lf %d", temp.price, temp.discount, temp.stock);
-		content.erase(cursor), cursor = content.begin();
+		content.pop_front();
 		length--;
 	}
 	fclose(file);
+}
+
+void GoodsList::Sort(char*mode)
+{
+	
+}
+
+int GoodsList::GetLength()
+{
+	return length;
 }

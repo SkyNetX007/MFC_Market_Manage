@@ -42,6 +42,12 @@
     <ClInclude Include="Goods.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="SelectBox.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="EditBox.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MFC_Market.cpp">
@@ -60,6 +66,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Goods.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectBox.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="EditBox.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

@@ -27,5 +27,8 @@ class GoodsList
 public:
 	void ReadFile();
 	void WriteFile();
+	void Sort(char*mode);
+	int GetLength();
+
 };
 
