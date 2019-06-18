@@ -1,15 +1,13 @@
 ﻿#pragma once
 
-
-
 // EditBox 视图
 
-class EditBox : public CScrollView
+class EditBox : public CFormView
 {
-	DECLARE_DYNCREATE(EditBox)
+	//DECLARE_DYNCREATE(EditBox)
 
 protected:
-	EditBox();           // 动态创建所使用的受保护的构造函数
+	           // 动态创建所使用的受保护的构造函数
 	virtual ~EditBox();
 
 public:

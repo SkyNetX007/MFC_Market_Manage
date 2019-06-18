@@ -21,6 +21,12 @@ public:
 
 protected:
 	DECLARE_MESSAGE_MAP()
+
+private:
+	CTreeCtrl* controlTree = nullptr;
+	CImageList* imageList = nullptr;
+public:
+	virtual void OnInitialUpdate();
 };
 
 

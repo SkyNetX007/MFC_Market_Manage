@@ -6,6 +6,8 @@
 #include "framework.h"
 #include "MFC_Market.h"
 #include "Goods.h"
+#include"SelectBox.h"
+#include"EditBox.h"
 
 #include "MainFrm.h"
 
@@ -36,9 +38,6 @@ static UINT indicators[] =
 CMainFrame::CMainFrame() noexcept
 {
 	// TODO: 在此添加成员初始化代码
-	GoodsList stock;
-	stock.ReadFile();
-	
 }
 
 CMainFrame::~CMainFrame()
@@ -57,6 +56,8 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	}
 	m_wndStatusBar.SetIndicators(indicators, sizeof(indicators)/sizeof(UINT));
 
+	MoveWindow(0, 0, 800, 600);
+
 	return 0;
 }
 
@@ -70,6 +71,8 @@ BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)
 	//主标题和图标
 	SetClassLong(m_hWnd, -14, (LONG)AfxGetApp()->LoadIconW(IDI_APERTURE));
 	SetTitle(TEXT("MFC_Market_Management"));
+
+	
 
 	return TRUE;
 }
@@ -165,3 +168,12 @@ void CMainFrame::OnUpdateApplicationLook(CCmdUI* pCmdUI)
 	pCmdUI->SetRadio(theApp.m_nAppLook == pCmdUI->m_nID);
 }
 
+
+
+BOOL CMainFrame::OnCreateClient(LPCREATESTRUCT lpcs, CCreateContext* pContext)
+{
+	windowSplitter.CreateStatic(this, 1, 2);
+	windowSplitter.CreateView(0, 0, RUNTIME_CLASS(SelectBox), CSize(200, 600), pContext);
+	windowSplitter.CreateView(0, 1, RUNTIME_CLASS(CFormView), CSize(600, 600), pContext);
+	return TRUE;
+}
