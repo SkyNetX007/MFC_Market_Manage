@@ -205,6 +205,7 @@
     <ClCompile Include="EditBox.cpp" />
     <ClCompile Include="Goods.cpp" />
     <ClCompile Include="Groups.cpp" />
+    <ClCompile Include="Login.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="md5.cpp" />
     <ClCompile Include="MFC_Market.cpp" />
@@ -222,6 +223,9 @@
     <ResourceCompile Include="MFCMarket.rc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\etc\passwd" />
+    <None Include="..\etc\shadow" />
+    <None Include="..\etc\shadow_decrypt" />
     <None Include="res\MFCMarket.rc2" />
   </ItemGroup>
   <ItemGroup>
