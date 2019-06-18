@@ -2,3 +2,6 @@
 ./.vscode
 ./Debug
 ./MFC_Market/Debug
+/.vs
+/MFC_Market/x64/Debug
+/x64/Debug

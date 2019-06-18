@@ -5,6 +5,9 @@
 #include "pch.h"
 #include "framework.h"
 #include "MFC_Market.h"
+#include "Goods.h"
+#include"SelectBox.h"
+#include"EditBox.h"
 
 #include "MainFrm.h"
 
@@ -53,9 +56,7 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	}
 	m_wndStatusBar.SetIndicators(indicators, sizeof(indicators)/sizeof(UINT));
 
-	SetClassLong(m_hWnd, GCL_HICON, (LONG)AfxGetApp()->LoadIconW(IDI_APERTURE));
-
-	SetTitle(TEXT("MFC_Market_Management"));
+	MoveWindow(0, 0, 800, 600);
 
 	return 0;
 }
@@ -66,6 +67,12 @@ BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)
 		return FALSE;
 	// TODO: 在此处通过修改
 	//  CREATESTRUCT cs 来修改窗口类或样式
+
+	//主标题和图标
+	SetClassLong(m_hWnd, -14, (LONG)AfxGetApp()->LoadIconW(IDI_APERTURE));
+	SetTitle(TEXT("MFC_Market_Management"));
+
+	
 
 	return TRUE;
 }
@@ -161,3 +168,12 @@ void CMainFrame::OnUpdateApplicationLook(CCmdUI* pCmdUI)
 	pCmdUI->SetRadio(theApp.m_nAppLook == pCmdUI->m_nID);
 }
 
+
+
+BOOL CMainFrame::OnCreateClient(LPCREATESTRUCT lpcs, CCreateContext* pContext)
+{
+	windowSplitter.CreateStatic(this, 1, 2);
+	windowSplitter.CreateView(0, 0, RUNTIME_CLASS(SelectBox),CSize(300,600),pContext);
+	windowSplitter.CreateView(0, 1, RUNTIME_CLASS(EditBox), CSize(500, 600), pContext);
+	return TRUE;
+}
