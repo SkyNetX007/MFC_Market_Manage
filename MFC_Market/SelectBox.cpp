@@ -20,6 +20,7 @@ SelectBox::~SelectBox()
 }
 
 BEGIN_MESSAGE_MAP(SelectBox, CTreeView)
+	ON_NOTIFY_REFLECT(TVN_SELCHANGED, &SelectBox::OnTvnSelchanged)
 END_MESSAGE_MAP()
 
 
@@ -63,4 +64,14 @@ void SelectBox::OnInitialUpdate()
 	controlTree->InsertItem(TEXT("BUY"), 6, 6, NULL);
 
 	// TODO: 在此添加专用代码和/或调用基类
+}
+
+
+void SelectBox::OnTvnSelchanged(NMHDR* pNMHDR, LRESULT* pResult)
+{
+	LPNMTREEVIEW pNMTreeView = reinterpret_cast<LPNMTREEVIEW>(pNMHDR);
+	// TODO: 在此添加控件通知处理程序代码
+	*pResult = 0;
+
+	HTREEITEM nowSelected = controlTree->GetSelectedItem();
 }

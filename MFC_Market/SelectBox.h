@@ -27,6 +27,7 @@ private:
 	CImageList* imageList = new CImageList;
 public:
 	virtual void OnInitialUpdate();
+	afx_msg void OnTvnSelchanged(NMHDR* pNMHDR, LRESULT* pResult);
 };
 
 
