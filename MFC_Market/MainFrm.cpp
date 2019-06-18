@@ -8,7 +8,6 @@
 #include "Goods.h"
 #include"SelectBox.h"
 #include"EditBox.h"
-
 #include "MainFrm.h"
 
 #ifdef _DEBUG
@@ -21,6 +20,12 @@ IMPLEMENT_DYNCREATE(CMainFrame, CFrameWnd)
 
 BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
 	ON_WM_CREATE()
+	ON_MESSAGE(EDIT_LOGIN, OnEditChanges)
+	ON_MESSAGE(EDIT_LOGOUT,OnEditChanges)
+	ON_MESSAGE(EDIT_USERS_MANAGEMENT, OnEditChanges)
+	ON_MESSAGE(EDIT_GOODS_MANAGEMENT, OnEditChanges)
+	ON_MESSAGE(EDIT_PURCHASE, OnEditChanges)
+	ON_MESSAGE(EDIT_RECEIPT_REFOUNDS, OnEditChanges)
 	ON_COMMAND_RANGE(ID_VIEW_APPLOOK_WIN_2000, ID_VIEW_APPLOOK_WINDOWS_7, &CMainFrame::OnApplicationLook)
 	ON_UPDATE_COMMAND_UI_RANGE(ID_VIEW_APPLOOK_WIN_2000, ID_VIEW_APPLOOK_WINDOWS_7, &CMainFrame::OnUpdateApplicationLook)
 END_MESSAGE_MAP()
@@ -69,7 +74,7 @@ BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)
 	//  CREATESTRUCT cs 来修改窗口类或样式
 
 	//主标题和图标
-	SetClassLong(m_hWnd, -14, (LONG)AfxGetApp()->LoadIconW(IDI_APERTURE));
+	SetClassLong(m_hWnd, -14, 311);
 	SetTitle(TEXT("MFC_Market_Management"));
 
 	
@@ -158,7 +163,6 @@ void CMainFrame::OnApplicationLook(UINT id)
 		CMFCVisualManager::SetDefaultManager(RUNTIME_CLASS(CMFCVisualManagerOffice2007));
 		CDockingManager::SetDockingMode(DT_SMART);
 	}
-
 	RedrawWindow(nullptr, nullptr, RDW_ALLCHILDREN | RDW_INVALIDATE | RDW_UPDATENOW | RDW_FRAME | RDW_ERASE);
 
 }
@@ -176,4 +180,35 @@ BOOL CMainFrame::OnCreateClient(LPCREATESTRUCT lpcs, CCreateContext* pContext)
 	windowSplitter.CreateView(0, 0, RUNTIME_CLASS(SelectBox),CSize(300,600),pContext);
 	windowSplitter.CreateView(0, 1, RUNTIME_CLASS(EditBox), CSize(500, 600), pContext);
 	return TRUE;
+}
+
+LRESULT CMainFrame::OnEditChanges(WPARAM message, LPARAM lparam)
+{
+	switch (message) {
+	case EDIT_LOGIN:
+		//cContext.m_pNewViewClass = RUNTIME_CLASS(LOGIN_PAGE);
+		//cContext.m_pCurrentFrame = this;
+		//cContext.m_pLastView = (CView*)windowSplitter.GetPane(0, 1);
+		//windowSplitter.DeleteView(0, 1);
+		//windowSplitter.CreateView(0, 1, RUNTIME_CLASS(LOGIN_PAGE), CSize(500, 600), &cContext);
+		//newView = (LOGIN_PAGE*)windowSplitter.GetPane(0, 1);
+		//windowSplitter.RecalcLayout();
+		//newView->Initialize();
+		//windowSplitter.SetActivePane(0, 1);
+		break;
+	case EDIT_LOGOUT:
+		break;
+	case EDIT_USERS_MANAGEMENT:
+		//MessageBox(TEXT("USERS_MANAGEMENT Loaded"));
+		break;
+	case EDIT_GOODS_MANAGEMENT:
+		break;
+	case EDIT_PURCHASE:
+		break;
+	case EDIT_RECEIPT_REFOUNDS:
+		break;
+	default:
+		break;
+	}
+	return 0;
 }

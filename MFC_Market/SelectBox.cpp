@@ -4,7 +4,7 @@
 #include "pch.h"
 #include "MFC_Market.h"
 #include "SelectBox.h"
-
+#include "MainFrm.h"
 
 // SelectBox
 
@@ -20,6 +20,7 @@ SelectBox::~SelectBox()
 }
 
 BEGIN_MESSAGE_MAP(SelectBox, CTreeView)
+	ON_NOTIFY_REFLECT(TVN_SELCHANGED, &SelectBox::OnTvnSelchanged)
 END_MESSAGE_MAP()
 
 
@@ -59,8 +60,40 @@ void SelectBox::OnInitialUpdate()
 
 	controlTree->InsertItem(TEXT("LOGIN"), 3, 3, NULL);
 	controlTree->InsertItem(TEXT("LOGOUT"), 4, 4, NULL);
-	controlTree->InsertItem(TEXT("EDIT_GOODS"), 1, 1, NULL);
-	controlTree->InsertItem(TEXT("BUY"), 6, 6, NULL);
+	controlTree->InsertItem(TEXT("USERS_MANAGEMENT"), 1, 1, NULL);
+	controlTree->InsertItem(TEXT("GOODS_MANAGEMENT"), 1, 1, NULL);
+	controlTree->InsertItem(TEXT("PURCHASE"), 6, 6, NULL);
+	controlTree->InsertItem(TEXT("RECEIPT & REFOUNDS"), 5, 5, NULL);
 
 	// TODO: 在此添加专用代码和/或调用基类
+}
+
+
+void SelectBox::OnTvnSelchanged(NMHDR* pNMHDR, LRESULT* pResult)
+{
+	LPNMTREEVIEW pNMTreeView = reinterpret_cast<LPNMTREEVIEW>(pNMHDR);
+	// TODO: 在此添加控件通知处理程序代码
+	*pResult = 0;
+
+	HTREEITEM nowSelected = controlTree->GetSelectedItem();
+	CString title = controlTree->GetItemText(nowSelected);
+
+	if (title == TEXT("LOGIN")) {
+		::PostMessage(AfxGetMainWnd()->GetSafeHwnd(), EDIT_LOGIN, EDIT_LOGIN, 0);
+	}
+	else if (title == TEXT("LOGOUT")) {
+		::PostMessage(AfxGetMainWnd()->GetSafeHwnd(), EDIT_LOGOUT, EDIT_LOGOUT, 0);
+	}
+	else if (title == TEXT("USERS_MANAGEMENT")) {
+		::PostMessage(AfxGetMainWnd()->GetSafeHwnd(), EDIT_USERS_MANAGEMENT, EDIT_USERS_MANAGEMENT, 0);
+	}
+	else if (title == TEXT("GOODS_MANAGEMENT")) {
+		::PostMessage(AfxGetMainWnd()->GetSafeHwnd(), EDIT_GOODS_MANAGEMENT, EDIT_USERS_MANAGEMENT, 0);
+	}
+	else if (title == TEXT("PURCHASE")) {
+		::PostMessage(AfxGetMainWnd()->GetSafeHwnd(), EDIT_PURCHASE, EDIT_PURCHASE, 0);
+	}
+	else if (title == TEXT("RECEIPT & REFOUNDS")) {
+		::PostMessage(AfxGetMainWnd()->GetSafeHwnd(), EDIT_RECEIPT_REFOUNDS, EDIT_RECEIPT_REFOUNDS, 0);
+	}
 }

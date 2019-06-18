@@ -1,30 +1,21 @@
-﻿#pragma once
+#pragma once
+#include "resource.h"
 
-
-
-// EditBox 视图
-
-class EditBox : public CScrollView
+class EditBox : public CFormView
 {
 	DECLARE_DYNCREATE(EditBox)
 
 protected:
-	EditBox();           // 动态创建所使用的受保护的构造函数
-	virtual ~EditBox();
+	EditBox();           // protected constructor used by dynamic creation
+	virtual ~EditBox() {};
 
 public:
-#ifdef _DEBUG
+	enum { IDD = IDD_LOGIN };
+
 	virtual void AssertValid() const;
-#ifndef _WIN32_WCE
 	virtual void Dump(CDumpContext& dc) const;
-#endif
-#endif
-
-protected:
-	virtual void OnDraw(CDC* pDC);      // 重写以绘制该视图
-	virtual void OnInitialUpdate();     // 构造后的第一次
-
 	DECLARE_MESSAGE_MAP()
+	afx_msg void OnBnClickedOk();
 };
 
 
