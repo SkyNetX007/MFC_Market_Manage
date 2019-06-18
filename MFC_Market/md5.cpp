@@ -1,3 +1,4 @@
+#include"pch.h"
 #include "md5.h"
 #include <iostream>
 

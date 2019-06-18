@@ -1,6 +1,8 @@
+#include"pch.h"
 #include "Groups.h"
-#include "md5.cpp"
 using namespace std;
+
+#pragma warning(disable:4996)
 
 int ACCESS::DisplayUserList()
 {

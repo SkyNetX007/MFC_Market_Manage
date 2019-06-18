@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <iostream>
+#include "md5.h"
 using namespace std;
 
 class ACCESS

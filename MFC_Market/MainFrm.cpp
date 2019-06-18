@@ -7,7 +7,7 @@
 #include "MFC_Market.h"
 #include "Goods.h"
 #include"SelectBox.h"
-#include"EditBox.h"
+#include"LoginView.h"
 #include "MainFrm.h"
 
 #ifdef _DEBUG
@@ -178,7 +178,7 @@ BOOL CMainFrame::OnCreateClient(LPCREATESTRUCT lpcs, CCreateContext* pContext)
 {
 	windowSplitter.CreateStatic(this, 1, 2);
 	windowSplitter.CreateView(0, 0, RUNTIME_CLASS(SelectBox),CSize(300,600),pContext);
-	windowSplitter.CreateView(0, 1, RUNTIME_CLASS(EditBox), CSize(500, 600), pContext);
+	windowSplitter.CreateView(0, 1, RUNTIME_CLASS(LoginView), CSize(500, 600), pContext);
 	return TRUE;
 }
 

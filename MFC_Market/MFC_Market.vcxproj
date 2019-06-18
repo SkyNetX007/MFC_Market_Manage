@@ -187,10 +187,10 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="EditBox.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Goods.h" />
     <ClInclude Include="Groups.h" />
+    <ClInclude Include="LoginView.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="md5.h" />
     <ClInclude Include="MFC_Market.h" />
@@ -202,9 +202,9 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="EditBox.cpp" />
     <ClCompile Include="Goods.cpp" />
     <ClCompile Include="Groups.cpp" />
+    <ClCompile Include="LoginView.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="md5.cpp" />
     <ClCompile Include="MFC_Market.cpp" />
