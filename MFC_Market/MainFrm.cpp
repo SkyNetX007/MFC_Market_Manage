@@ -8,6 +8,7 @@
 #include "Goods.h"
 #include"SelectBox.h"
 #include"LoginView.h"
+#include"LogoutView.h"
 #include "MainFrm.h"
 
 #ifdef _DEBUG
@@ -185,19 +186,30 @@ BOOL CMainFrame::OnCreateClient(LPCREATESTRUCT lpcs, CCreateContext* pContext)
 LRESULT CMainFrame::OnEditChanges(WPARAM message, LPARAM lparam)
 {
 	switch (message) {
-	case EDIT_LOGIN:
-		//cContext.m_pNewViewClass = RUNTIME_CLASS(LOGIN_PAGE);
-		//cContext.m_pCurrentFrame = this;
-		//cContext.m_pLastView = (CView*)windowSplitter.GetPane(0, 1);
-		//windowSplitter.DeleteView(0, 1);
-		//windowSplitter.CreateView(0, 1, RUNTIME_CLASS(LOGIN_PAGE), CSize(500, 600), &cContext);
-		//newView = (LOGIN_PAGE*)windowSplitter.GetPane(0, 1);
-		//windowSplitter.RecalcLayout();
-		//newView->Initialize();
-		//windowSplitter.SetActivePane(0, 1);
-		break;
-	case EDIT_LOGOUT:
-		break;
+	case EDIT_LOGIN: {
+		cContext.m_pNewViewClass = RUNTIME_CLASS(LoginView);
+		cContext.m_pCurrentFrame = this;
+		cContext.m_pLastView = (CFormView*)windowSplitter.GetPane(0, 1);
+		windowSplitter.DeleteView(0, 1);
+		windowSplitter.CreateView(0, 1, RUNTIME_CLASS(LoginView), CSize(500, 600), &cContext);
+		LoginView* newView = (LoginView*)windowSplitter.GetPane(0, 1);
+		windowSplitter.RecalcLayout();
+		newView->OnInitialUpdate();
+		windowSplitter.SetActivePane(0, 1);
+	}
+					 break;
+	case EDIT_LOGOUT: {
+		cContext.m_pNewViewClass = RUNTIME_CLASS(LogoutView);
+		cContext.m_pCurrentFrame = this;
+		cContext.m_pLastView = (CFormView*)windowSplitter.GetPane(0, 1);
+		windowSplitter.DeleteView(0, 1);
+		windowSplitter.CreateView(0, 1, RUNTIME_CLASS(LogoutView), CSize(500, 600), &cContext);
+		LogoutView* newView = (LogoutView*)windowSplitter.GetPane(0, 1);
+		windowSplitter.RecalcLayout();
+		newView->OnInitialUpdate();
+		windowSplitter.SetActivePane(0, 1);
+	}
+					  break;
 	case EDIT_USERS_MANAGEMENT:
 		//MessageBox(TEXT("USERS_MANAGEMENT Loaded"));
 		break;
