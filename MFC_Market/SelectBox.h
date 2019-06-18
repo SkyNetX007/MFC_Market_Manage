@@ -24,7 +24,7 @@ protected:
 
 private:
 	CTreeCtrl* controlTree = nullptr;
-	CImageList* imageList = nullptr;
+	CImageList* imageList = new CImageList;
 public:
 	virtual void OnInitialUpdate();
 };

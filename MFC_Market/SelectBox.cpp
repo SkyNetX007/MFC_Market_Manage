@@ -46,14 +46,21 @@ void SelectBox::Dump(CDumpContext& dc) const
 void SelectBox::OnInitialUpdate()
 {
 	CTreeView::OnInitialUpdate();
+
+	imageList->Create(30, 30, ILC_COLOR32, 1, 7);
+	HICON icon;
+	for (int i = 0; i < 7; i++) {
+		icon = AfxGetApp()->LoadIconW(IDI_APERTURE + i);
+		imageList->Add(icon);
+	}
 	
 	controlTree = &GetTreeCtrl();
+	controlTree->SetImageList(imageList, TVSIL_NORMAL);
 
-	HICON icon = AfxGetApp()->LoadIconW(IDI_EDIT);	
-	imageList->Create(30, 30, ILC_COLOR16, 1, 1);
-	imageList->Add(icon);
-
-	controlTree->InsertItem(TEXT("BUY"),0, 0, NULL);
+	controlTree->InsertItem(TEXT("LOGIN"), 3, 3, NULL);
+	controlTree->InsertItem(TEXT("LOGOUT"), 4, 4, NULL);
+	controlTree->InsertItem(TEXT("EDIT_GOODS"), 1, 1, NULL);
+	controlTree->InsertItem(TEXT("BUY"), 6, 6, NULL);
 
 	// TODO: 在此添加专用代码和/或调用基类
 }

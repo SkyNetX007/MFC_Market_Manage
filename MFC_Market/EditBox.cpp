@@ -8,14 +8,19 @@
 
 // EditBox
 
-//IMPLEMENT_DYNCREATE(EditBox, CFormView)
+IMPLEMENT_DYNCREATE(EditBox, CScrollView)
+
+EditBox::EditBox()
+{
+
+}
 
 EditBox::~EditBox()
 {
 }
 
 
-BEGIN_MESSAGE_MAP(EditBox, CFormView)
+BEGIN_MESSAGE_MAP(EditBox, CScrollView)
 END_MESSAGE_MAP()
 
 
@@ -23,7 +28,7 @@ END_MESSAGE_MAP()
 
 void EditBox::OnInitialUpdate()
 {
-	CFormView::OnInitialUpdate();
+	CScrollView::OnInitialUpdate();
 
 	CSize sizeTotal;
 	// TODO:  计算此视图的合计大小
@@ -43,13 +48,13 @@ void EditBox::OnDraw(CDC* pDC)
 #ifdef _DEBUG
 void EditBox::AssertValid() const
 {
-	CFormView::AssertValid();
+	CScrollView::AssertValid();
 }
 
 #ifndef _WIN32_WCE
 void EditBox::Dump(CDumpContext& dc) const
 {
-	CFormView::Dump(dc);
+	CScrollView::Dump(dc);
 }
 #endif
 #endif //_DEBUG
