@@ -4,6 +4,13 @@
 
 #pragma once
 
+#define EDIT_LOGIN (WM_USER+100)
+#define EDIT_LOGOUT (WM_USER+101)
+#define EDIT_USERS_MANAGEMENT (WM_USER+102)
+#define EDIT_GOODS_MANAGEMENT (WM_USER+103)
+#define EDIT_PURCHASE (WM_USER+104)
+#define EDIT_RECEIPT_REFOUNDS (WM_USER+105)
+
 class CMainFrame : public CFrameWnd
 {
 	
@@ -43,6 +50,8 @@ protected:
 
 private:
 	CSplitterWnd windowSplitter;
+	CCreateContext cContext;
+	afx_msg LRESULT OnEditChanges(WPARAM message, LPARAM lparam);
 };
 
 

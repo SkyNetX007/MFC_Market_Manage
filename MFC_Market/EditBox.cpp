@@ -1,63 +1,40 @@
-ï»¿// EditBox.cpp: å®ç°æ–‡ä»¶
-//
-
 #include "pch.h"
-#include "MFC_Market.h"
+#include "MainFrm.h"
 #include "EditBox.h"
+#include "resource.h"
 
-
-// EditBox
-
-IMPLEMENT_DYNCREATE(EditBox, CScrollView)
+IMPLEMENT_DYNCREATE(EditBox, CFormView)
 
 EditBox::EditBox()
+	: CFormView(EditBox::IDD)
 {
 
 }
 
-EditBox::~EditBox()
-{
-}
 
 
-BEGIN_MESSAGE_MAP(EditBox, CScrollView)
-END_MESSAGE_MAP()
-
-
-// EditBox ç»˜å›¾
-
-void EditBox::OnInitialUpdate()
-{
-	CScrollView::OnInitialUpdate();
-
-	CSize sizeTotal;
-	// TODO:  è®¡ç®—æ­¤è§†å›¾çš„åˆè®¡å¤§å°
-	sizeTotal.cx = sizeTotal.cy = 100;
-	SetScrollSizes(MM_TEXT, sizeTotal);
-}
-
-void EditBox::OnDraw(CDC* pDC)
-{
-	CDocument* pDoc = GetDocument();
-	// TODO:  åœ¨æ­¤æ·»åŠ ç»˜åˆ¶ä»£ç 
-}
-
-
-// EditBox è¯Šæ–­
-
-#ifdef _DEBUG
 void EditBox::AssertValid() const
 {
-	CScrollView::AssertValid();
+	CFormView::AssertValid();
+
+	// TODO: ÔÚ´ËÌí¼Ó×¨ÓÃ´úÂëºÍ/»òµ÷ÓÃ»ùÀà
 }
 
-#ifndef _WIN32_WCE
+
 void EditBox::Dump(CDumpContext& dc) const
 {
-	CScrollView::Dump(dc);
+	CFormView::Dump(dc);
+
+	// TODO: ÔÚ´ËÌí¼Ó×¨ÓÃ´úÂëºÍ/»òµ÷ÓÃ»ùÀà
 }
-#endif
-#endif //_DEBUG
+BEGIN_MESSAGE_MAP(EditBox, CFormView)
+	ON_BN_CLICKED(IDOK, &EditBox::OnBnClickedOk)
+END_MESSAGE_MAP()
 
-
-// EditBox æ¶ˆæ¯å¤„ç†ç¨‹åº
+void EditBox::OnBnClickedOk()
+{
+	CString inUsername, inPasswd;
+	GetDlgItemText(IDC_EDIT1, inUsername);
+	GetDlgItemText(IDC_EDIT2, inPasswd);
+	MessageBox(inUsername + inPasswd);
+}
