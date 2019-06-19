@@ -6,9 +6,10 @@
 #include "framework.h"
 #include "MFC_Market.h"
 #include "Goods.h"
-#include"SelectBox.h"
-#include"LoginView.h"
-#include"LogoutView.h"
+#include "SelectBox.h"
+#include "LoginView.h"
+#include "LogoutView.h"
+#include "GoodsManageView.h"
 #include "MainFrm.h"
 
 #ifdef _DEBUG
@@ -209,11 +210,20 @@ LRESULT CMainFrame::OnEditChanges(WPARAM message, LPARAM lparam)
 		newView->OnInitialUpdate();
 		windowSplitter.SetActivePane(0, 1);
 	}
-					  break;
-	case EDIT_USERS_MANAGEMENT:
-		//MessageBox(TEXT("USERS_MANAGEMENT Loaded"));
 		break;
-	case EDIT_GOODS_MANAGEMENT:
+	case EDIT_GOODS_MANAGEMENT: {
+		cContext.m_pNewViewClass = RUNTIME_CLASS(GoodsManageView);
+		cContext.m_pCurrentFrame = this;
+		cContext.m_pLastView = (CFormView*)windowSplitter.GetPane(0, 1);
+		windowSplitter.DeleteView(0, 1);
+		windowSplitter.CreateView(0, 1, RUNTIME_CLASS(GoodsManageView), CSize(500, 600), &cContext);
+		GoodsManageView* newView = (GoodsManageView*)windowSplitter.GetPane(0, 1);
+		windowSplitter.RecalcLayout();
+		newView->OnInitialUpdate();
+		windowSplitter.SetActivePane(0, 1);
+	}
+		break;
+	case EDIT_USERS_MANAGEMENT:
 		break;
 	case EDIT_PURCHASE:
 		break;

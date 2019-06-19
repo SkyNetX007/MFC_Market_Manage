@@ -12,7 +12,8 @@ LoginView::LoginView()
 	: CFormView(LoginView::IDD)
 {
 
-}BEGIN_MESSAGE_MAP(LoginView, CFormView)
+}
+BEGIN_MESSAGE_MAP(LoginView, CFormView)
 ON_BN_CLICKED(IDOK, &LoginView::OnBnClickedOk)
 END_MESSAGE_MAP()
 

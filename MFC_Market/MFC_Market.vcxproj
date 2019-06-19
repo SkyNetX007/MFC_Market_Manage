@@ -189,6 +189,7 @@
   <ItemGroup>
     <ClInclude Include="framework.h" />
     <ClInclude Include="Goods.h" />
+    <ClInclude Include="GoodsManageView.h" />
     <ClInclude Include="LoginView.h" />
     <ClInclude Include="LogoutView.h" />
     <ClInclude Include="MainFrm.h" />
@@ -202,6 +203,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Goods.cpp" />
+    <ClCompile Include="GoodsManageView.cpp" />
     <ClCompile Include="LoginView.cpp" />
     <ClCompile Include="LogoutView.cpp" />
     <ClCompile Include="MainFrm.cpp" />

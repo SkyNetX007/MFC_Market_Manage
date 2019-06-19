@@ -3,7 +3,7 @@
 #include <afx.h>
 #include <list>
 
-#define _GOODS_LIST_FILE "GoodsList.txt"
+#define _GOODS_LIST_FILE "../etc/GoodsList.txt"
 
 using namespace std;
 
@@ -17,6 +17,8 @@ class Goods
 	double price = 0;
 	double discount = 0;
 	int stock = 0;
+
+	void Edit(CString _name, CString _ID, double _price, double _discount, int _stock, CString _type = TEXT("0"));
 };
 
 class GoodsList
@@ -27,7 +29,9 @@ class GoodsList
 public:
 	void ReadFile();
 	void WriteFile();
+
 	void Sort(char*mode);
+	void Add(CString& name, CString& ID, double& price, int& stock, CString type = TEXT("0"));
 	int GetLength();
 
 };

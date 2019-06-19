@@ -88,7 +88,7 @@ void SelectBox::OnTvnSelchanged(NMHDR* pNMHDR, LRESULT* pResult)
 		::PostMessage(AfxGetMainWnd()->GetSafeHwnd(), EDIT_USERS_MANAGEMENT, EDIT_USERS_MANAGEMENT, 0);
 	}
 	else if (title == TEXT("GOODS_MANAGEMENT")) {
-		::PostMessage(AfxGetMainWnd()->GetSafeHwnd(), EDIT_GOODS_MANAGEMENT, EDIT_USERS_MANAGEMENT, 0);
+		::PostMessage(AfxGetMainWnd()->GetSafeHwnd(), EDIT_GOODS_MANAGEMENT, EDIT_GOODS_MANAGEMENT, 0);
 	}
 	else if (title == TEXT("PURCHASE")) {
 		::PostMessage(AfxGetMainWnd()->GetSafeHwnd(), EDIT_PURCHASE, EDIT_PURCHASE, 0);
