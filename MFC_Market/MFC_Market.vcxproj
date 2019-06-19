@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -187,9 +187,11 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="EditBox.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Goods.h" />
+    <ClInclude Include="GoodsManageView.h" />
+    <ClInclude Include="LoginView.h" />
+    <ClInclude Include="LogoutView.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="MFC_Market.h" />
     <ClInclude Include="MFC_MarketDoc.h" />
@@ -200,8 +202,10 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="EditBox.cpp" />
     <ClCompile Include="Goods.cpp" />
+    <ClCompile Include="GoodsManageView.cpp" />
+    <ClCompile Include="LoginView.cpp" />
+    <ClCompile Include="LogoutView.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="MFC_Market.cpp" />
     <ClCompile Include="MFC_MarketDoc.cpp" />
@@ -218,6 +222,9 @@
     <ResourceCompile Include="MFCMarket.rc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\etc\passwd" />
+    <None Include="..\etc\shadow" />
+    <None Include="..\etc\shadow_decrypt" />
     <None Include="res\MFCMarket.rc2" />
   </ItemGroup>
   <ItemGroup>
@@ -233,7 +240,7 @@
     <Image Include="res\MFC_MarketDoc.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="GoodsList.txt" />
+    <Text Include="..\etc\GoodsList.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

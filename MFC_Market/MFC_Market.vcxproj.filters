@@ -45,7 +45,13 @@
     <ClInclude Include="SelectBox.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="EditBox.h">
+    <ClInclude Include="LoginView.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LogoutView.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="GoodsManageView.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -71,7 +77,13 @@
     <ClCompile Include="SelectBox.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="EditBox.cpp">
+    <ClCompile Include="LoginView.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LogoutView.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="GoodsManageView.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -82,6 +94,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="res\MFCMarket.rc2">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\etc\passwd">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\etc\shadow">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\etc\shadow_decrypt">
       <Filter>资源文件</Filter>
     </None>
   </ItemGroup>
@@ -118,7 +139,7 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="GoodsList.txt">
+    <Text Include="..\etc\GoodsList.txt">
       <Filter>资源文件</Filter>
     </Text>
   </ItemGroup>
