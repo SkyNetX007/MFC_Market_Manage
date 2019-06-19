@@ -10,6 +10,7 @@
 #include "LoginView.h"
 #include "LogoutView.h"
 #include "GoodsManageView.h"
+#include "PurchaseView.h"
 #include "MainFrm.h"
 
 #ifdef _DEBUG
@@ -225,7 +226,18 @@ LRESULT CMainFrame::OnEditChanges(WPARAM message, LPARAM lparam)
 		break;
 	case EDIT_USERS_MANAGEMENT:
 		break;
-	case EDIT_PURCHASE:
+	case EDIT_PURCHASE: {
+		cContext.m_pNewViewClass = RUNTIME_CLASS(PurchaseView);
+		cContext.m_pCurrentFrame = this;
+		cContext.m_pLastView = (CFormView*)windowSplitter.GetPane(0, 1);
+		windowSplitter.DeleteView(0, 1);
+		windowSplitter.CreateView(0, 1, RUNTIME_CLASS(PurchaseView), CSize(500, 600), &cContext);
+		PurchaseView* newView = (PurchaseView*)windowSplitter.GetPane(0, 1);
+		windowSplitter.RecalcLayout();
+		newView->OnInitialUpdate();
+		windowSplitter.SetActivePane(0, 1);
+	}
+						break;
 		break;
 	case EDIT_RECEIPT_REFOUNDS:
 		break;

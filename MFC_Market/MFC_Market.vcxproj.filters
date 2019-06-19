@@ -54,6 +54,9 @@
     <ClInclude Include="GoodsManageView.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="PurchaseView.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MFC_Market.cpp">
@@ -84,6 +87,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="GoodsManageView.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="PurchaseView.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

@@ -50,9 +50,9 @@ void GoodsList::WriteFile()
 
 
 
-void GoodsList::Sort(char*mode)
+void GoodsList::Sort(CString mode)
 {
-	
+	content.sort();
 }
 
 void GoodsList::Delete(list<Goods>::iterator item)
