@@ -30,6 +30,11 @@ void GoodsManageView::ReloadListBox()
 	for (; tempLength > 0; it++, tempLength--) {
 		listBox->AddString(it->name);
 	}
+	SetDlgItemText(IDC_CHANGED_NAME, TEXT(""));
+	SetDlgItemText(IDC_CHANGED_ID, TEXT(""));
+	SetDlgItemText(IDC_CHANGED_PRICE, TEXT(""));
+	SetDlgItemText(IDC_CHANGED_DISCOUNT, TEXT(""));
+	SetDlgItemText(IDC_CHANGED_QUANTITY, TEXT(""));
 }
 
 void GoodsManageView::OnCbnSelchangeGoodslist()
@@ -77,11 +82,11 @@ void GoodsManageView::OnBnClickedAddButton()
 		newPrice = _ttof(priceStr);
 		newStock = _ttoi(stockStr);
 		currentList.Add(newName, newID, newPrice, newStock);
+		ReloadListBox();
 		SetDlgItemText(IDC_NEWNAME, TEXT(""));
 		SetDlgItemText(IDC_NEWID, TEXT(""));
 		SetDlgItemText(IDC_NEWPRICE, TEXT(""));
 		SetDlgItemText(IDC_NEWQUANTITY, TEXT(""));
-		ReloadListBox();
 	}
 	
 }
@@ -97,6 +102,7 @@ void GoodsManageView::OnBnClickedSaveButton()
 void GoodsManageView::OnBnClickedDeleteButton()
 {
 	currentList.Delete(currentGoods);
+	currentGoods = currentList.getFirstGoods();
 	ReloadListBox();
 }
 
@@ -119,11 +125,6 @@ void GoodsManageView::OnBnClickedChangeButton()
 		iStock = _ttoi(cStock);
 		currentGoods->Edit(cName, cID, dPrice, dDiscount, iStock);
 		ReloadListBox();
-		SetDlgItemText(IDC_CHANGED_NAME, TEXT(""));
-		SetDlgItemText(IDC_CHANGED_ID, TEXT(""));
-		SetDlgItemText(IDC_CHANGED_PRICE, TEXT(""));
-		SetDlgItemText(IDC_CHANGED_DISCOUNT, TEXT(""));
-		SetDlgItemText(IDC_CHANGED_QUANTITY, TEXT(""));
 	}
 }
 

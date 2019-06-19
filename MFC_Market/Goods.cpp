@@ -58,6 +58,7 @@ void GoodsList::Sort(char*mode)
 void GoodsList::Delete(list<Goods>::iterator item)
 {
 	content.erase(item);
+	length--;
 }
 
 void GoodsList::Add(CString& name, CString& ID, double& price, int& stock, CString type)
