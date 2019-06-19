@@ -11,6 +11,7 @@ class Goods
 {
 	friend class GoodsList;
 
+public:
 	CString name = TEXT("\0");
 	CString ID = TEXT("\0");
 	CString type = TEXT("\0");
@@ -30,9 +31,13 @@ public:
 	void ReadFile();
 	void WriteFile();
 
+	list<Goods>::iterator getFirstGoods() { return content.begin(); }
+	list<Goods>::iterator getLastGoods() { return --content.end(); }
+	list<Goods>::iterator Find(CString _name);
 	void Sort(char*mode);
+	void Delete(list<Goods>::iterator item);
 	void Add(CString& name, CString& ID, double& price, int& stock, CString type = TEXT("0"));
 	int GetLength();
-
+	
 };
 

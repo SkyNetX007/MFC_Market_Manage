@@ -55,6 +55,11 @@ void GoodsList::Sort(char*mode)
 	
 }
 
+void GoodsList::Delete(list<Goods>::iterator item)
+{
+	content.erase(item);
+}
+
 void GoodsList::Add(CString& name, CString& ID, double& price, int& stock, CString type)
 {
 	Goods newGoods;
@@ -66,6 +71,22 @@ void GoodsList::Add(CString& name, CString& ID, double& price, int& stock, CStri
 int GoodsList::GetLength()
 {
 	return length;
+}
+
+list<Goods>::iterator GoodsList::Find(CString _name)
+{
+	list<Goods>::iterator it = content.begin();
+	int tempLength = length;
+	while (1)
+	{
+		if (it->name == _name)
+			break;
+		if (tempLength < 0)
+			break;
+		it++, tempLength--;
+	}
+	if (length >= 0)
+		return it;
 }
 
 
