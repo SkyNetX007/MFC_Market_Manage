@@ -48,7 +48,6 @@ void UsersList::WriteFile()
 
 void UsersList::Sort(CString mode)
 {
-	content.sort();
 }
 
 void UsersList::Delete(list<ACCESS>::iterator _Account)
