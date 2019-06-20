@@ -47,10 +47,9 @@ void PurchaseView::OnBnClickedSortButton()
 	CString accord;
 	GetDlgItemText(IDC_SORT_METHOD, accord);
 	if (!accord.IsEmpty()) {
-		chooseList = (CListCtrl*)GetDlgItem(IDC_GOODS_LIST);
-		chooseList->SortItems(sort, (DWORD)chooseList);
-
+		filterList.Sort(accord);
 	}
+	ReloadLists();
 }
 
 void PurchaseView::OnBnClickedTocartButton()
@@ -136,7 +135,12 @@ void PurchaseView::OnBnClickedIncartButton()
 
 void PurchaseView::OnBnClickedBuyButto()
 {
-	// TODO: 在此添加控件通知处理程序代码
+	if (cart.GetLength() == 0)
+		return;
+	cart.WriteFile(1);
+	totalList.WriteFile();
+	cart = *new GoodsList;
+	ReloadLists();
 }
 
 void PurchaseView::OnInitialUpdate()
@@ -200,15 +204,6 @@ void PurchaseView::ReloadLists()
 	SetDlgItemText(IDC_INCART_QUANTITY, TEXT(""));
 	SetDlgItemText(IDC_TOCART_QUANTITY, TEXT(""));
 	SetDlgItemText(IDC_TOCART_ID, TEXT(""));
-}
-
-int sort(LPARAM lp1, LPARAM lp2, LPARAM lp3)
-{
-	CListCtrl* list = (CListCtrl*)lp3;
-	CString ca, cb;
-	ca = list->GetItemText(lp1, 0);
-	cb = list->GetItemText(lp2, 0);
-	return ca.Compare(cb) > 0;
 }
 
 void PurchaseView::OnNMClickGoodsList(NMHDR* pNMHDR, LRESULT* pResult)

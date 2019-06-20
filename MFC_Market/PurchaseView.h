@@ -34,5 +34,3 @@ public:
 	afx_msg void OnNMClickCartList(NMHDR* pNMHDR, LRESULT* pResult);
 
 };
-
-static int CALLBACK sort(LPARAM lp1, LPARAM lp2, LPARAM lp3);

@@ -160,5 +160,8 @@
     <Text Include="..\etc\GoodsList.txt">
       <Filter>资源文件</Filter>
     </Text>
+    <Text Include="..\etc\Last_Receipt.txt">
+      <Filter>资源文件</Filter>
+    </Text>
   </ItemGroup>
 </Project>
