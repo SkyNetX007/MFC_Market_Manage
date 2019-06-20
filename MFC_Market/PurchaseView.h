@@ -12,7 +12,6 @@ protected:
 
 public:
 	enum { IDD = IDD_PURCHASE };
-	virtual void OnInitialUpdate();
 	DECLARE_MESSAGE_MAP()
 	afx_msg void OnBnClickedFilterButton();
 	afx_msg void OnBnClickedSortButton();
@@ -24,11 +23,5 @@ public:
 	afx_msg void OnBnClickedBuyButto();
 	afx_msg void OnLvnItemchangedGoodsList(NMHDR* pNMHDR, LRESULT* pResult);
 	afx_msg void OnLvnItemchangedCartList(NMHDR* pNMHDR, LRESULT* pResult);
-	
-
-private:
-	GoodsList totalList, filterList, cart;
-	CListCtrl *chooseList, *cartList;
-	void ReloadLists();
 };
 
