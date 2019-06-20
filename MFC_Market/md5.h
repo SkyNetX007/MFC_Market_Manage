@@ -27,6 +27,8 @@ public:
 	void Final(unsigned char digest[16]);
 
 	//MFC风格接口,可以直接使用,不需要调用Init,Update和Final接口
+	friend class LoginView;
+
 	VOID GetMd5String(OUT CString& strMD5, IN char* input, IN int inputlen);
 	VOID GetMd5String(OUT CString& strMD5, IN CString strInput);
 

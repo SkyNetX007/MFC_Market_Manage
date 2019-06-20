@@ -18,6 +18,8 @@ public:
 	CString GroupType = TEXT("\0");
 	string PASSWORD_MD5 = 0;
 
+	ACCESS(int _UID, CString _ACCOUNT, CString _COMMENT, CString _GroupType = TEXT("guest"), string _PASSWORD_MD5 = 0);
+	ACCESS() { }
 	void Edit(int _UID, CString _ACCOUNT, CString _COMMENT, CString _GroupType = TEXT("guest"), string _PASSWORD_MD5 = 0);
 };
 

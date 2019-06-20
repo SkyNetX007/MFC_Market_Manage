@@ -1,6 +1,16 @@
 #include "pch.h"
 #include "Groups.h"
+
 #pragma warning(disable:4996)
+
+ACCESS::ACCESS(int _UID, CString _ACCOUNT, CString _COMMENT, CString _GroupType, string _PASSWORD_MD5)
+{
+	UID = _UID;
+	ACCOUNT = _ACCOUNT;
+	COMMENT = _COMMENT;
+	GroupType = _GroupType;
+	PASSWORD_MD5 = _PASSWORD_MD5;
+}
 
 void ACCESS::Edit(int _UID, CString _ACCOUNT, CString _COMMENT, CString _GroupType, string _PASSWORD_MD5)
 {
