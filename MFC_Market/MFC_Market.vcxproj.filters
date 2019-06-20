@@ -57,6 +57,12 @@
     <ClInclude Include="PurchaseView.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="md5.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Groups.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MFC_Market.cpp">
@@ -90,6 +96,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="PurchaseView.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="md5.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Groups.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

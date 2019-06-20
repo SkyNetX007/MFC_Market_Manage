@@ -53,28 +53,14 @@
 #define IDC_LIST1                       1018
 #define IDC_SAVE_BUTTON                 1019
 #define IDC_CHANGED_DISCOUNT            1020
-#define IDC_CART_LIST                   1025
-#define IDC_TOCART_BUTTON               1026
-#define IDC_GOODS_LIST                  1027
-#define IDC_TOCART_SPIN                 1030
-#define IDC_SORT_METHOD                 1032
-#define IDC_SORT_BUTTON                 1033
-#define IDC_FILTER_CONTENT              1034
-#define IDC_FILTER_BUTTON               1035
-#define IDC_INCART_QUANTITY             1037
-#define IDC_INCART_SPIN                 1038
-#define IDC_INCART_BUTTON               1039
-#define IDC_BUY_BUTTO                   1040
-#define IDC_TOCART_QUANTITY             1041
-#define IDC_TOCART_ID                   1042
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        337
+#define _APS_NEXT_RESOURCE_VALUE        333
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1043
+#define _APS_NEXT_CONTROL_VALUE         1019
 #define _APS_NEXT_SYMED_VALUE           310
 #endif
 #endif
