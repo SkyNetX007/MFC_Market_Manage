@@ -33,9 +33,11 @@ public:
 
 	list<Goods>::iterator getFirstGoods() { return content.begin(); }
 	list<Goods>::iterator getLastGoods() { return --content.end(); }
+	list<Goods>::iterator getEnd() { return content.end(); }
 	list<Goods>::iterator Find(CString _name);
+	list<Goods>::iterator FindID(CString _ID);
 	void Delete(list<Goods>::iterator item);
-	void Add(CString& name, CString& ID, double& price, int& stock, CString type = TEXT("0"));
+	void Add(CString name, CString ID, double price, int stock, CString type = TEXT("0"));
 	int GetLength();
 	
 };

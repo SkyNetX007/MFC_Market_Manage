@@ -54,7 +54,7 @@ void GoodsList::Delete(list<Goods>::iterator item)
 	length--;
 }
 
-void GoodsList::Add(CString& name, CString& ID, double& price, int& stock, CString type)
+void GoodsList::Add(CString name, CString ID, double price, int stock, CString type)
 {
 	Goods newGoods;
 	newGoods.Edit(name, ID, price, 0.0, stock, type);
@@ -73,14 +73,26 @@ list<Goods>::iterator GoodsList::Find(CString _name)
 	int tempLength = length;
 	while (1)
 	{
+		if (tempLength == 0)
+			return content.end();
 		if (it->name == _name)
-			break;
-		if (tempLength < 0)
-			break;
+			return it;
 		it++, tempLength--;
 	}
-	if (length >= 0)
-		return it;
+}
+
+list<Goods>::iterator GoodsList::FindID(CString _ID)
+{
+	list<Goods>::iterator it = content.begin();
+	int tempLength = length;
+	while (1)
+	{
+		if (tempLength == 0)
+			return content.end();
+		if (it->ID == _ID)
+			return it;
+		it++, tempLength--;
+	}
 }
 
 
