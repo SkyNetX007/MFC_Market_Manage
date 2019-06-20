@@ -48,6 +48,13 @@ void GoodsList::WriteFile()
 	fclose(file);
 }
 
+
+
+void GoodsList::Sort(CString mode)
+{
+	content.sort();
+}
+
 void GoodsList::Delete(list<Goods>::iterator item)
 {
 	content.erase(item);
