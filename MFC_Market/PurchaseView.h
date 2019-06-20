@@ -2,6 +2,7 @@
 #include <afxext.h>
 #include "resource.h"
 #include "Goods.h"
+
 class PurchaseView : public CFormView
 {
 	DECLARE_DYNCREATE(PurchaseView)
@@ -13,6 +14,7 @@ protected:
 public:
 	enum { IDD = IDD_PURCHASE };
 	virtual void OnInitialUpdate();
+	
 	DECLARE_MESSAGE_MAP()
 	afx_msg void OnBnClickedFilterButton();
 	afx_msg void OnBnClickedSortButton();
@@ -20,6 +22,7 @@ public:
 	afx_msg void OnBnClickedDeleteButton();
 	afx_msg void OnBnClickedIncartButton();
 	afx_msg void OnBnClickedBuyButto();
+	afx_msg void OnConfirm(WPARAM wParam, LPARAM lParam);
 	
 
 private:

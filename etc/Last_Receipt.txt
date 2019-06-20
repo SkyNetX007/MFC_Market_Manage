@@ -1,15 +1,5 @@
 Name	Price	Quantity
 
-添加新
-商品	23.50	1
+1		3.20	1
 
-IDFKA	466.20	1
-
-MFC_Ma
-rket	999.00	1
-
-Englis
-h_Soap
-3.20	1
-
-Total: 1491.900000
+Total: 3.200000

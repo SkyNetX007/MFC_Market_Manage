@@ -11,6 +11,8 @@
 #define EDIT_PURCHASE (WM_USER+104)
 #define EDIT_RECEIPT_REFOUNDS (WM_USER+105)
 
+#define PURCHASE_CONFIRM (WM_USER+106)
+
 class CMainFrame : public CFrameWnd
 {
 	

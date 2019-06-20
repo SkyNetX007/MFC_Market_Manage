@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "PurchaseView.h"
 
+
 // PurchaseView
 
 using namespace std;
@@ -22,6 +23,7 @@ BEGIN_MESSAGE_MAP(PurchaseView, CFormView)
 	ON_BN_CLICKED(IDC_BUY_BUTTO, &PurchaseView::OnBnClickedBuyButto)
 	ON_NOTIFY(NM_CLICK, IDC_GOODS_LIST, &PurchaseView::OnNMClickGoodsList)
 	ON_NOTIFY(NM_CLICK, IDC_CART_LIST, &PurchaseView::OnNMClickCartList)
+	//ON_MESSAGE(PURCHASE_CONFIRM, &PurchaseView::OnConfirm)
 END_MESSAGE_MAP()
 
 void PurchaseView::OnBnClickedFilterButton()
@@ -137,10 +139,13 @@ void PurchaseView::OnBnClickedBuyButto()
 {
 	if (cart.GetLength() == 0)
 		return;
-	cart.WriteFile(1);
-	totalList.WriteFile();
-	cart = *new GoodsList;
-	ReloadLists();
+	if (MessageBox(TEXT("确定购买？"),TEXT("确认"), MB_OKCANCEL) == IDOK) {
+		cart.WriteFile(1);
+		totalList.WriteFile();
+		cart = *new GoodsList;
+		ReloadLists();
+	}
+	
 }
 
 void PurchaseView::OnInitialUpdate()
@@ -160,6 +165,11 @@ void PurchaseView::OnInitialUpdate()
 	cartList->InsertColumn(2, columnHeads[5], 0, 80, 0);
 
 	ReloadLists();
+}
+
+void PurchaseView::OnConfirm(WPARAM wParam, LPARAM lParam)
+{
+	
 }
 
 void PurchaseView::ReloadLists()
