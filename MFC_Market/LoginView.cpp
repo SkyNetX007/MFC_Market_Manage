@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "LoginView.h"
-#include "LoginView.h"
 
 // LoginView
 

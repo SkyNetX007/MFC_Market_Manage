@@ -1,0 +1,10 @@
+Name	Price	Quantity
+
+Englis
+h_Soap	3.20	1
+
+BFG_90
+00		23.50	1
+
+
+Total: 26.700

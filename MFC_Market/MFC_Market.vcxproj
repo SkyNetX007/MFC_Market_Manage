@@ -190,13 +190,16 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="Goods.h" />
     <ClInclude Include="GoodsManageView.h" />
+    <ClInclude Include="Groups.h" />
     <ClInclude Include="LoginView.h" />
     <ClInclude Include="LogoutView.h" />
     <ClInclude Include="MainFrm.h" />
+    <ClInclude Include="md5.h" />
     <ClInclude Include="MFC_Market.h" />
     <ClInclude Include="MFC_MarketDoc.h" />
     <ClInclude Include="MFC_MarketView.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="PurchaseView.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SelectBox.h" />
     <ClInclude Include="targetver.h" />
@@ -204,9 +207,11 @@
   <ItemGroup>
     <ClCompile Include="Goods.cpp" />
     <ClCompile Include="GoodsManageView.cpp" />
+    <ClCompile Include="Groups.cpp" />
     <ClCompile Include="LoginView.cpp" />
     <ClCompile Include="LogoutView.cpp" />
     <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="md5.cpp" />
     <ClCompile Include="MFC_Market.cpp" />
     <ClCompile Include="MFC_MarketDoc.cpp" />
     <ClCompile Include="MFC_MarketView.cpp" />
@@ -216,6 +221,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="PurchaseView.cpp" />
     <ClCompile Include="SelectBox.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -241,6 +247,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\etc\GoodsList.txt" />
+    <Text Include="..\etc\Last_Receipt.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

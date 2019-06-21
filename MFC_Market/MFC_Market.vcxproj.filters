@@ -54,6 +54,15 @@
     <ClInclude Include="GoodsManageView.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="PurchaseView.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="md5.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Groups.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MFC_Market.cpp">
@@ -84,6 +93,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="GoodsManageView.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="PurchaseView.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="md5.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Groups.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -140,6 +158,9 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\etc\GoodsList.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="..\etc\Last_Receipt.txt">
       <Filter>资源文件</Filter>
     </Text>
   </ItemGroup>
