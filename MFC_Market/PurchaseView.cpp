@@ -139,7 +139,17 @@ void PurchaseView::OnBnClickedBuyButto()
 {
 	if (cart.GetLength() == 0)
 		return;
-	if (MessageBox(TEXT("确定购买？"),TEXT("确认"), MB_OKCANCEL) == IDOK) {
+	list<Goods>::iterator it = cart.getFirstGoods();
+	int kinds = cart.GetLength();
+	double total = 0;
+	while (it != cart.getLastGoods()) {
+		total += it->price * it->stock;
+		it++;
+	}
+	CString n1, n2, content;
+	n1.Format(TEXT("%d"), kinds), n2.Format(TEXT("%.3lf"), total);
+	content = TEXT("已选择") + n1 + TEXT("种商品, 共") + n2 + TEXT("元。\n确认购买吗？");
+	if (MessageBox(content,TEXT("确认"), MB_OKCANCEL) == IDOK) {
 		cart.WriteFile(1);
 		totalList.WriteFile();
 		cart = *new GoodsList;
@@ -211,9 +221,9 @@ void PurchaseView::ReloadLists()
 		it++;
 	}
 
-	SetDlgItemText(IDC_INCART_QUANTITY, TEXT(""));
-	SetDlgItemText(IDC_TOCART_QUANTITY, TEXT(""));
-	SetDlgItemText(IDC_TOCART_ID, TEXT(""));
+	SetDlgItemText(IDC_INCART_QUANTITY, NULL);
+	SetDlgItemText(IDC_TOCART_QUANTITY, NULL);
+	SetDlgItemText(IDC_TOCART_ID, NULL);
 }
 
 void PurchaseView::OnNMClickGoodsList(NMHDR* pNMHDR, LRESULT* pResult)
@@ -230,8 +240,8 @@ void PurchaseView::OnNMClickGoodsList(NMHDR* pNMHDR, LRESULT* pResult)
 		SetDlgItemText(IDC_TOCART_QUANTITY, TEXT("1"));
 	}
 	else {
-		SetDlgItemText(IDC_TOCART_ID, TEXT(""));
-		SetDlgItemText(IDC_TOCART_QUANTITY, TEXT(""));
+		SetDlgItemText(IDC_TOCART_ID, NULL);
+		SetDlgItemText(IDC_TOCART_QUANTITY, NULL);
 	}
 
 	*pResult = 0;

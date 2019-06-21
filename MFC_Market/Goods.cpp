@@ -58,7 +58,7 @@ void GoodsList::WriteFile(int receipt)
 	if (!file)
 		return ;
 	if (receipt) 
-		fprintf(file, "Name\tPrice\tQuantity");
+		fprintf(file, "Name\tPrice\tQuantity\n\n");
 
 	int tempLength = length;
 	double total = 0;
@@ -66,16 +66,16 @@ void GoodsList::WriteFile(int receipt)
 	{
 		tempsName = CStringA(it->name), tempsID = CStringA(it->ID), tempsType = CStringA(it->type);
 		if (receipt) {
-			fprintf(file, "\n\n");
-			int i = (tempsName.length()) / 6;
-			for (int j = 0; j < i; j++)
-				fprintf(file, "%s\n", tempsName.substr(j * 6, 6).c_str());
-			if (tempsName.length() - 6 * i >= 4)
+			int length = tempsName.length(), lineNum = length / 6, remainLength = length % 6;
+			int i = 0;
+			for (; i < lineNum - (remainLength == 0); i++)
+				fprintf(file, "%s\n", tempsName.substr(i * 6, 6).c_str());
+			if (remainLength >= 4 || remainLength == 0)
 				fprintf(file, "%s\t", tempsName.substr(i * 6).c_str());
 			else
 				fprintf(file, "%s\t\t", tempsName.substr(i * 6).c_str());
-			fprintf(file, "%.2lf\t%d", it->price, it->stock);
-			total += it->price;
+			fprintf(file, "%.2lf\t%d\n\n", it->price, it->stock);
+			total += it->price * it->stock;
 		}
 		else {
 			fprintf(file, "\n%s %s %s", tempsName.c_str(), tempsID.c_str(), tempsType.c_str());
@@ -84,7 +84,7 @@ void GoodsList::WriteFile(int receipt)
 		tempLength--;
 	}
 	if (receipt)
-		fprintf(file, "\n\nTotal: %lf", total);
+		fprintf(file, "\nTotal: %.3lf", total);
 	fclose(file);
 }
 
