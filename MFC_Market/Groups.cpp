@@ -25,13 +25,17 @@ void UsersList::ReadFile()
 {
 	FILE* file = fopen(_ACCOUNT_LIST_FILE, "r+");
 	ACCESS temp;
-	//char tmpUsername[33] = "\0", tmpCMT[100] = "\0", tmpGroupType[9] = "guest";
+	char tmpUsername[33] = "\0", tmpCMT[100] = "\0", tmpGroupType[9] = "guest", tmpPsd[20] = "\0";
 	if (!file) {
 		return;
 	}
 	while (!feof(file))
 	{
-		fscanf(file, "%d:%s:%s:%s:%s", temp.UID, temp.ACCOUNT, temp.COMMENT, temp.GroupType, temp.PASSWORD_MD5);
+		fscanf(file, "%d%s%s%s%s", &temp.UID, tmpUsername, tmpCMT, tmpGroupType, tmpPsd);
+		temp.ACCOUNT = tmpUsername;
+		temp.COMMENT = tmpCMT;
+		temp.GroupType = tmpGroupType;
+		temp.PASSWORD_MD5 = tmpPsd;
 		content.push_back(temp);
 		length++;
 	}
@@ -50,7 +54,7 @@ void UsersList::WriteFile()
 	for (list<ACCESS>::iterator it = content.begin(); tempLength > 0; it++)
 	{
 		tmpUsername = CStringA(it->ACCOUNT), tmpCMT = CStringA(it->COMMENT), tmpGroupType = CStringA(it->GroupType);
-		fprintf(file, "%d:%s:%s:%s:%s", temp.UID, tmpUsername.c_str(), tmpCMT.c_str(), tmpGroupType.c_str(), temp.PASSWORD_MD5);
+		fprintf(file, "%d%s%s%s%s", temp.UID, tmpUsername.c_str(), tmpCMT.c_str(), tmpGroupType.c_str(), temp.PASSWORD_MD5);
 		tempLength--;
 	}
 	fclose(file);

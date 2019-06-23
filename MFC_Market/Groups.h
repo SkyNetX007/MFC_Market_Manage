@@ -13,9 +13,9 @@ class ACCESS
 
 public:
 	int UID = 0;
-	CString ACCOUNT = TEXT("\0");
+	CString ACCOUNT = TEXT("DEFAULTUSER");
 	CString COMMENT = TEXT("\0");
-	CString GroupType = TEXT("\0");
+	CString GroupType = TEXT("guest");
 	string PASSWORD_MD5 = 0;
 
 	ACCESS(int _UID, CString _ACCOUNT, CString _COMMENT, CString _GroupType = TEXT("guest"), string _PASSWORD_MD5 = 0);
