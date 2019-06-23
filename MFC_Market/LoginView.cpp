@@ -36,7 +36,7 @@ void LoginView::OnBnClickedOk()
 	//CMD5Crypt MD5Encryption;
 	//MD5Encryption.GetMd5String(CpsdMD5, inPasswd);
 	//psdMD5 = CStringA(CpsdMD5);
-	psdMD5 = CStringA(inPasswd);
+	//psdMD5 = CStringA(inPasswd);
 
 	UsersList Userslist;
 	Userslist.ReadFile();
