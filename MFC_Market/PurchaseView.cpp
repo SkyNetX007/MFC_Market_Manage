@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "PurchaseView.h"
 
+
 // PurchaseView
 
 using namespace std;
@@ -22,6 +23,7 @@ BEGIN_MESSAGE_MAP(PurchaseView, CFormView)
 	ON_BN_CLICKED(IDC_BUY_BUTTO, &PurchaseView::OnBnClickedBuyButto)
 	ON_NOTIFY(NM_CLICK, IDC_GOODS_LIST, &PurchaseView::OnNMClickGoodsList)
 	ON_NOTIFY(NM_CLICK, IDC_CART_LIST, &PurchaseView::OnNMClickCartList)
+	//ON_MESSAGE(PURCHASE_CONFIRM, &PurchaseView::OnConfirm)
 END_MESSAGE_MAP()
 
 void PurchaseView::OnBnClickedFilterButton()
@@ -47,10 +49,9 @@ void PurchaseView::OnBnClickedSortButton()
 	CString accord;
 	GetDlgItemText(IDC_SORT_METHOD, accord);
 	if (!accord.IsEmpty()) {
-		chooseList = (CListCtrl*)GetDlgItem(IDC_GOODS_LIST);
-		chooseList->SortItems(sort, (DWORD)chooseList);
-
+		filterList.Sort(accord);
 	}
+	ReloadLists();
 }
 
 void PurchaseView::OnBnClickedTocartButton()
@@ -136,7 +137,25 @@ void PurchaseView::OnBnClickedIncartButton()
 
 void PurchaseView::OnBnClickedBuyButto()
 {
-	// TODO: 在此添加控件通知处理程序代码
+	if (cart.GetLength() == 0)
+		return;
+	list<Goods>::iterator it = cart.getFirstGoods();
+	int kinds = cart.GetLength();
+	double total = 0;
+	while (it != cart.getLastGoods()) {
+		total += it->price * it->stock;
+		it++;
+	}
+	CString n1, n2, content;
+	n1.Format(TEXT("%d"), kinds), n2.Format(TEXT("%.3lf"), total);
+	content = TEXT("已选择") + n1 + TEXT("种商品, 共") + n2 + TEXT("元。\n确认购买吗？");
+	if (MessageBox(content,TEXT("确认"), MB_OKCANCEL) == IDOK) {
+		cart.WriteFile(1);
+		totalList.WriteFile();
+		cart = *new GoodsList;
+		ReloadLists();
+	}
+	
 }
 
 void PurchaseView::OnInitialUpdate()
@@ -156,6 +175,11 @@ void PurchaseView::OnInitialUpdate()
 	cartList->InsertColumn(2, columnHeads[5], 0, 80, 0);
 
 	ReloadLists();
+}
+
+void PurchaseView::OnConfirm(WPARAM wParam, LPARAM lParam)
+{
+	
 }
 
 void PurchaseView::ReloadLists()
@@ -197,18 +221,9 @@ void PurchaseView::ReloadLists()
 		it++;
 	}
 
-	SetDlgItemText(IDC_INCART_QUANTITY, TEXT(""));
-	SetDlgItemText(IDC_TOCART_QUANTITY, TEXT(""));
-	SetDlgItemText(IDC_TOCART_ID, TEXT(""));
-}
-
-int sort(LPARAM lp1, LPARAM lp2, LPARAM lp3)
-{
-	CListCtrl* list = (CListCtrl*)lp3;
-	CString ca, cb;
-	ca = list->GetItemText(lp1, 0);
-	cb = list->GetItemText(lp2, 0);
-	return ca.Compare(cb) > 0;
+	SetDlgItemText(IDC_INCART_QUANTITY, NULL);
+	SetDlgItemText(IDC_TOCART_QUANTITY, NULL);
+	SetDlgItemText(IDC_TOCART_ID, NULL);
 }
 
 void PurchaseView::OnNMClickGoodsList(NMHDR* pNMHDR, LRESULT* pResult)
@@ -225,8 +240,8 @@ void PurchaseView::OnNMClickGoodsList(NMHDR* pNMHDR, LRESULT* pResult)
 		SetDlgItemText(IDC_TOCART_QUANTITY, TEXT("1"));
 	}
 	else {
-		SetDlgItemText(IDC_TOCART_ID, TEXT(""));
-		SetDlgItemText(IDC_TOCART_QUANTITY, TEXT(""));
+		SetDlgItemText(IDC_TOCART_ID, NULL);
+		SetDlgItemText(IDC_TOCART_QUANTITY, NULL);
 	}
 
 	*pResult = 0;

@@ -15,5 +15,7 @@
 #include <afxwin.h>
 #include <afxcontrolbars.h>
 #include <afxcontrolbars.h>
+#include <afxcontrolbars.h>
+#include <afxcontrolbars.h>
 
 #endif //PCH_H

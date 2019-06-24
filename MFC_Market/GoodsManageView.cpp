@@ -30,11 +30,11 @@ void GoodsManageView::ReloadListBox()
 	for (; tempLength > 0; it++, tempLength--) {
 		listBox->AddString(it->name);
 	}
-	SetDlgItemText(IDC_CHANGED_NAME, TEXT(""));
-	SetDlgItemText(IDC_CHANGED_ID, TEXT(""));
-	SetDlgItemText(IDC_CHANGED_PRICE, TEXT(""));
-	SetDlgItemText(IDC_CHANGED_DISCOUNT, TEXT(""));
-	SetDlgItemText(IDC_CHANGED_QUANTITY, TEXT(""));
+	SetDlgItemText(IDC_CHANGED_NAME, NULL);
+	SetDlgItemText(IDC_CHANGED_ID, NULL);
+	SetDlgItemText(IDC_CHANGED_PRICE, NULL);
+	SetDlgItemText(IDC_CHANGED_DISCOUNT, NULL);
+	SetDlgItemText(IDC_CHANGED_QUANTITY, NULL);
 }
 
 void GoodsManageView::OnCbnSelchangeGoodslist()
@@ -79,14 +79,20 @@ void GoodsManageView::OnBnClickedAddButton()
 	if (newName.IsEmpty() || newID.IsEmpty() || priceStr.IsEmpty() || stockStr.IsEmpty())
 		MessageBox(TEXT("Insufficient input!"));
 	else {
+		list<Goods>::iterator it = currentList.FindID(newID);
+		if (it != currentList.getEnd()) {
+			MessageBox(TEXT("ID already exists!"));
+			SetDlgItemText(IDC_NEWID, NULL);
+			return;
+		}
 		newPrice = _ttof(priceStr);
 		newStock = _ttoi(stockStr);
 		currentList.Add(newName, newID, newPrice, newStock);
 		ReloadListBox();
-		SetDlgItemText(IDC_NEWNAME, TEXT(""));
-		SetDlgItemText(IDC_NEWID, TEXT(""));
-		SetDlgItemText(IDC_NEWPRICE, TEXT(""));
-		SetDlgItemText(IDC_NEWQUANTITY, TEXT(""));
+		SetDlgItemText(IDC_NEWNAME, NULL);
+		SetDlgItemText(IDC_NEWID, NULL);
+		SetDlgItemText(IDC_NEWPRICE, NULL);
+		SetDlgItemText(IDC_NEWQUANTITY, NULL);
 	}
 	
 }
@@ -119,6 +125,12 @@ void GoodsManageView::OnBnClickedChangeButton()
 		MessageBox(TEXT("Insuffient input!"));
 	}
 	else {
+		list<Goods>::iterator it = currentList.FindID(cID);
+		if (it != currentList.getEnd() && it->name != currentGoods->name) {
+			MessageBox(TEXT("ID already exists!"));
+			SetDlgItemText(IDC_CHANGED_ID, NULL);
+			return;
+		}
 		double dPrice, dDiscount;
 		int iStock;
 		dPrice = _ttof(cPrice), dDiscount = _ttof(cDiscount);

@@ -4,6 +4,7 @@
 #include <list>
 
 #define _GOODS_LIST_FILE "../etc/GoodsList.txt"
+#define _RECEIPT_FILE "../etc/Last_Receipt.txt"
 
 using namespace std;
 
@@ -29,7 +30,7 @@ class GoodsList
 
 public:
 	void ReadFile();
-	void WriteFile();
+	void WriteFile(int receipt = 0);
 
 	list<Goods>::iterator getFirstGoods() { return content.begin(); }
 	list<Goods>::iterator getLastGoods() { return --content.end(); }
@@ -38,7 +39,9 @@ public:
 	list<Goods>::iterator FindID(CString _ID);
 	void Delete(list<Goods>::iterator item);
 	void Add(CString name, CString ID, double price, int stock, CString type = TEXT("0"));
+	void Sort(CString accrod);
 	int GetLength();
 	
 };
+
 
