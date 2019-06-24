@@ -2,6 +2,7 @@
 #include <afxext.h>
 #include "Resource.h"
 #include "Groups.h"
+#include <fstream>
 
 class LoginView : public CFormView
 {

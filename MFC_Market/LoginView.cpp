@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "LoginView.h"
-#include "md5.h"
+//#include "md5.h"
 #include <string>
 
 // LoginView
@@ -8,6 +8,34 @@
 using namespace std;
 
 IMPLEMENT_DYNCREATE(LoginView, CFormView)
+
+int CheckPsd(CString inUsername, CString inPasswd, ACCESS cache_User)
+{
+	string Username = CStringA(inUsername);
+	string Password = CStringA(inPasswd);
+	string buf = "..\\etc\\md5.exe " + Password;
+	//char tmp[] = buf;
+	system(buf.c_str());
+	fstream cache;
+	cache.open("..\\MFC_Market\\cache");
+	if (!cache.is_open())
+	{
+		exit(1);
+	}
+	char tmp[33] = "\0";
+	cache >> tmp;
+	cache.close();
+	DeleteFile(TEXT("..\\MFC_Market\\cache"));
+	string md5_cache = tmp;
+	if (cache_User.PASSWORD_MD5==md5_cache)
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+}
 
 
 LoginView::LoginView()
@@ -23,15 +51,14 @@ END_MESSAGE_MAP()
 void LoginView::OnBnClickedOk()
 {
 	CString inUsername = TEXT("\0"), inPasswd = TEXT("\0"), CpsdMD5;
-	string psdMD5;
+	//string psdMD5;
 	GetDlgItemText(IDC_EDIT1, inUsername);
 	GetDlgItemText(IDC_EDIT2, inPasswd);
 	if (inUsername.IsEmpty())
 	{
-		MessageBox(TEXT("Please insert username"),_T("Warning"));
+		MessageBox(TEXT("Please input valid username!"),TEXT("ERROR!"), MB_ICONEXCLAMATION);
 		return;
 	}
-
 
 	//CMD5Crypt MD5Encryption;
 	//MD5Encryption.GetMd5String(CpsdMD5, inPasswd);
@@ -43,8 +70,23 @@ void LoginView::OnBnClickedOk()
 	list<ACCESS>::iterator it = currentList.Find(inUsername);
 	if (it == currentList.getEnd())
 	{
-		MessageBox(TEXT("User does not exist!"));
+		MessageBox(TEXT("User does not exist!"), TEXT("Warning"), MB_ICONEXCLAMATION);
 		return;
 	}
-	
+	else
+	{
+		ACCESS cache_User = *it;
+		if (!CheckPsd(inUsername, inPasswd, cache_User))
+		{
+			MessageBox(TEXT("密码错误！"), TEXT("Warning"), MB_ICONEXCLAMATION);
+			return;
+		}
+		*currentUser = *it;
+		SetDlgItemText(IDC_EDIT1, TEXT(""));
+		SetDlgItemText(IDC_EDIT2, TEXT(""));
+		CString Msg=TEXT("用户 ");
+		Msg.Append(currentUser->ACCOUNT);
+		Msg.Append(TEXT(" 登录成功！"));
+		MessageBox(Msg,TEXT("Sign In"));
+	}
 }

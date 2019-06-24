@@ -25,7 +25,7 @@ void UsersList::ReadFile()
 {
 	FILE* file = fopen(_ACCOUNT_LIST_FILE, "r+");
 	ACCESS temp;
-	char tmpUsername[33] = "\0", tmpCMT[100] = "\0", tmpGroupType[9] = "guest", tmpPsd[20] = "\0";
+	char tmpUsername[33] = "\0", tmpCMT[100] = "\0", tmpGroupType[9] = "guest", tmpPsd[33] = "\0";
 	if (!file) {
 		return;
 	}
