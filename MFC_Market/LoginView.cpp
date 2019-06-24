@@ -15,17 +15,26 @@ int CheckPsd(CString inUsername, CString inPasswd, ACCESS cache_User)
 	string Password = CStringA(inPasswd);
 	string buf = "..\\etc\\md5.exe " + Password;
 	//char tmp[] = buf;
+	/*
+	PROCESS_INFORMATION pi;
+	STARTUPINFO si;
+	memset(&si, 0, sizeof(si));
+	si.cb = sizeof(si);
+	si.wShowWindow = SW_SHOW;
+	si.dwFlags = STARTF_USESHOWWINDOW;
+	CreateProcess(LPCWSTR(buf.c_str()), NULL, NULL, FALSE, CREATE_NO_WINDOW, NULL, NULL, NULL, &si, &pi);
+	*/
 	system(buf.c_str());
-	fstream cache;
-	cache.open("..\\MFC_Market\\cache");
+	fstream cache("..\\MFC_Market\\cache");
 	if (!cache.is_open())
 	{
-		exit(1);
+		//exit(1);
 	}
 	char tmp[33] = "\0";
 	cache >> tmp;
 	cache.close();
 	DeleteFile(TEXT("..\\MFC_Market\\cache"));
+
 	string md5_cache = tmp;
 	if (cache_User.PASSWORD_MD5==md5_cache)
 	{
@@ -81,6 +90,7 @@ void LoginView::OnBnClickedOk()
 			MessageBox(TEXT("√‹¬Î¥ÌŒÛ£°"), TEXT("Warning"), MB_ICONEXCLAMATION);
 			return;
 		}
+		
 		*currentUser = *it;
 		SetDlgItemText(IDC_EDIT1, TEXT(""));
 		SetDlgItemText(IDC_EDIT2, TEXT(""));
