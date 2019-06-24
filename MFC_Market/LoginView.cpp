@@ -2,7 +2,6 @@
 #include "LoginView.h"
 #include "md5.h"
 #include <string>
-#include "Groups.h"
 
 // LoginView
 
@@ -23,29 +22,29 @@ END_MESSAGE_MAP()
 
 void LoginView::OnBnClickedOk()
 {
-	//ACCESS CurrentUser(0, TEXT("DEFAULTUSER"), TEXT("\0"), TEXT("guest"), NULL);
-	ACCESS CurrentUser;
 	CString inUsername = TEXT("\0"), inPasswd = TEXT("\0"), CpsdMD5;
 	string psdMD5;
 	GetDlgItemText(IDC_EDIT1, inUsername);
 	GetDlgItemText(IDC_EDIT2, inPasswd);
-	if (inUsername.Compare(TEXT("\0")) == 0)
+	if (inUsername.IsEmpty())
 	{
+		MessageBox(TEXT("Please insert username"),_T("Warning"));
 		return;
 	}
+
+
 	//CMD5Crypt MD5Encryption;
 	//MD5Encryption.GetMd5String(CpsdMD5, inPasswd);
 	//psdMD5 = CStringA(CpsdMD5);
 	//psdMD5 = CStringA(inPasswd);
 
-	UsersList Userslist;
-	Userslist.ReadFile();
-	if (Userslist.Find(inUsername)->PASSWORD_MD5 == psdMD5)
+	UsersList currentList;
+	currentList.ReadFile();
+	list<ACCESS>::iterator it = currentList.Find(inUsername);
+	if (it == currentList.getEnd())
 	{
-		CurrentUser.Edit(Userslist.Find(inUsername)->UID, Userslist.Find(inUsername)->ACCOUNT, Userslist.Find(inUsername)->COMMENT, Userslist.Find(inUsername)->GroupType, Userslist.Find(inUsername)->PASSWORD_MD5);
-	}
-	else
-	{
+		MessageBox(TEXT("User does not exist!"));
 		return;
 	}
+	
 }

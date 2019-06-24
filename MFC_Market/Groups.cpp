@@ -89,12 +89,10 @@ list<ACCESS>::iterator UsersList::Find(CString _Username)
 	int tempLength = length;
 	while (1)
 	{
+		if (tempLength == 0)
+			return content.end();
 		if (it->ACCOUNT == _Username)
-			break;
-		if (tempLength < 0)
-			break;
+			return it;
 		it++, tempLength--;
 	}
-	if (length >= 0)
-		return it;
 }
