@@ -4,6 +4,7 @@
 #include "Groups.h"
 #include <fstream>
 #include <string>
+#include "MainFrm.h"
 
 class LoginView : public CFormView
 {
@@ -14,9 +15,11 @@ protected:
 	virtual ~LoginView() {};
 
 public:
-	ACCESS* currentUser = new ACCESS;
 
 	enum { IDD = IDD_LOGIN };
 	DECLARE_MESSAGE_MAP()
 	afx_msg void OnBnClickedOk();
+	
+public:
+	virtual void OnInitialUpdate();
 };

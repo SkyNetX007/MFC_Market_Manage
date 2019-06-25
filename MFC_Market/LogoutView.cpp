@@ -6,7 +6,7 @@
 using namespace std;
 
 IMPLEMENT_DYNCREATE(LogoutView, CFormView)
-
+/*
 char* FindBetween(char* input, int length, char start, char end)
 {
 	char* result = new char[length], current = 0;
@@ -28,7 +28,7 @@ char* FindBetween(char* input, int length, char start, char end)
 	result[resultLength] = 0;
 	return result;
 }
-
+*/
 
 LogoutView::LogoutView()
 	: CFormView(LogoutView::IDD)
@@ -42,22 +42,28 @@ END_MESSAGE_MAP()
 
 void LogoutView::OnBnClickedOk()//ÍË³öµÇÂ½
 {
+	/*
 	char title[65] = "\0";
 	GetWindowTextA(AfxGetMainWnd()->GetSafeHwnd(), LPSTR(title), 64);
 	string strTitle = title;
-	if (strTitle == "Î´µÇÂ½ - MFC_Market_Management" || strTitle == "Î´µÇÂ½")
+	*/
+	if (!((CMainFrame*)AfxGetMainWnd())->currentUser->ACCOUNT.Compare(TEXT("DEFAULTUSER")))
 	{
 		MessageBox(TEXT("ÇëÏÈµÇÂ½£¡"),TEXT("ERROR!"), MB_ICONEXCLAMATION);
 		return;
 	}
-	SetWindowTextA(AfxGetMainWnd()->GetSafeHwnd(), "Î´µÇÂ½");
+	//((CMainFrame*)AfxGetMainWnd())->currentUser->Edit(0, TEXT("DEFAULTUSER"), TEXT("0"), TEXT("guest"), "0");
+	((CMainFrame*)AfxGetMainWnd())->currentUser->ACCOUNT = TEXT("DEFAULTUSER");
+	SetWindowTextA(AfxGetMainWnd()->GetSafeHwnd(), "Î´µÇÂ½ - MFC_Market_Management");
 	MessageBox(TEXT("µÇ³ö³É¹¦£¡"));
+	::PostMessage(AfxGetMainWnd()->GetSafeHwnd(), EDIT_LOGIN, EDIT_LOGIN, 0);
 	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼þÍ¨Öª´¦Àí³ÌÐò´úÂë
 }
 
 
 void LogoutView::OnBnClickedOk2()//ÐÞ¸ÄÃÜÂë
 {
+	/*
 	char title[65] = "\0";
 	GetWindowTextA(AfxGetMainWnd()->GetSafeHwnd(), LPSTR(title), 64);
 	string strTitle = title;
@@ -68,7 +74,14 @@ void LogoutView::OnBnClickedOk2()//ÐÞ¸ÄÃÜÂë
 	}
 	CString Username;
 	Username = FindBetween(title, 65, '£º', ' ');
-	
+	*/
+	if (!((CMainFrame*)AfxGetMainWnd())->currentUser->ACCOUNT.Compare(TEXT("DEFAULTUSER")))
+	{
+		MessageBox(TEXT("ÇëÏÈµÇÂ½£¡"), TEXT("ERROR!"), MB_ICONEXCLAMATION);
+		return;
+	}
+	CString Username = ((CMainFrame*)AfxGetMainWnd())->currentUser->ACCOUNT;
+
 	CString passwd1, passwd2;
 	GetDlgItemText(IDC_EDIT3, passwd1);
 	GetDlgItemText(IDC_EDIT4, passwd2);

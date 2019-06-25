@@ -165,6 +165,9 @@ void PurchaseView::OnInitialUpdate()
 	totalList.ReadFile();
 	filterList = totalList;
 
+	ACCESS* user = ((CMainFrame*)AfxGetMainWnd())->currentUser;
+	CString currentAccess = user->ACCOUNT;
+
 	chooseList = (CListCtrl*)GetDlgItem(IDC_GOODS_LIST);
 	cartList = (CListCtrl*)GetDlgItem(IDC_CART_LIST);
 	CString columnHeads[6] = { TEXT("名称"),TEXT("原价"),TEXT("折扣"),TEXT("现价"),TEXT("库存"),TEXT("数目") };

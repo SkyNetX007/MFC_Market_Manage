@@ -4,6 +4,7 @@
 #include <string>
 #include "Groups.h"
 #include <fstream>
+#include "MainFrm.h"
 
 class LogoutView : public CFormView
 {
