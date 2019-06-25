@@ -92,8 +92,10 @@ void LoginView::OnBnClickedOk()
 		}
 		
 		*currentUser = *it;
+		string title = "已登录用户： " + CStringA(currentUser->ACCOUNT) + " [" + CStringA(currentUser->GroupType) + "]";
 		SetDlgItemText(IDC_EDIT1, TEXT(""));
 		SetDlgItemText(IDC_EDIT2, TEXT(""));
+		SetWindowTextA(AfxGetMainWnd()->GetSafeHwnd(), title.c_str());
 		CString Msg=TEXT("用户 ");
 		Msg.Append(currentUser->ACCOUNT);
 		Msg.Append(TEXT(" 登录成功！"));
