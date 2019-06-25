@@ -72,7 +72,7 @@ CMD5Crypt::~CMD5Crypt()
 }
 
 
-void CMD5Crypt::GetMd5String(CString& strMD5, char* input, int inputlen)
+void CMD5Crypt::GetMd5String(OUT CString& strMD5,IN char* input,IN int inputlen)
 {
 	unsigned char digest[16];
 
@@ -83,12 +83,12 @@ void CMD5Crypt::GetMd5String(CString& strMD5, char* input, int inputlen)
 	CString strTemp;
 	for (int i = 0; i < 16; i++)
 	{
-		strTemp.Format(_T("x"), digest[i]);
+		strTemp.Format(_T("%x"), digest[i]);
 		strMD5 += strTemp;
 	}
 }
 
-VOID CMD5Crypt::GetMd5String(CString& strMD5, CString strInput)
+VOID CMD5Crypt::GetMd5String(OUT CString& strMD5, IN CString strInput)
 {
 	int len;
 	len = strInput.GetLength();
