@@ -90,13 +90,13 @@ void LoginView::OnBnClickedOk()
 			return;
 		}
 		
-		*currentUser = *it;
-		string title = "已登陆用户：" + CStringA(currentUser->ACCOUNT) + " [" + CStringA(currentUser->GroupType) + "]";
+		*((CMainFrame*)AfxGetMainWnd())->currentUser = *it;
+		string title = "已登陆用户：" + CStringA(((CMainFrame*)AfxGetMainWnd())->currentUser->ACCOUNT) + " [" + CStringA(((CMainFrame*)AfxGetMainWnd())->currentUser->GroupType) + "]";
 		SetDlgItemText(IDC_EDIT1, TEXT(""));
 		SetDlgItemText(IDC_EDIT2, TEXT(""));
 		SetWindowTextA(AfxGetMainWnd()->GetSafeHwnd(), title.c_str());
 		CString Msg=TEXT("用户 ");
-		Msg.Append(currentUser->ACCOUNT);
+		Msg.Append(((CMainFrame*)AfxGetMainWnd())->currentUser->ACCOUNT);
 		Msg.Append(TEXT(" 登陆成功！"));
 		MessageBox(Msg,TEXT("Sign In"));
 	}
