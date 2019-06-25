@@ -1,15 +1,9 @@
 Name	Price	Quantity
 
-´¿Å£ÄÌ
-1L		10.80	5
-
-Êæ·ô¼Ñ
-ÄûÃÊÏã
-Ôí		3.20	1
-
-¼¦µ°¼å
-±ı500g
-×°		8.00	2
+Englis
+h_Soap	3.20	1
 
 
-Total: 73.200
+Total: 3.200
+
+User: DEFAULTUSER

@@ -150,7 +150,7 @@ void PurchaseView::OnBnClickedBuyButto()
 	n1.Format(TEXT("%d"), kinds), n2.Format(TEXT("%.3lf"), total);
 	content = TEXT("已选择") + n1 + TEXT("种商品, 共") + n2 + TEXT("元。\n确认购买吗？");
 	if (MessageBox(content,TEXT("确认"), MB_OKCANCEL) == IDOK) {
-		cart.WriteFile(1);
+		cart.WriteFile(1, ((CMainFrame*)AfxGetMainWnd())->currentUser->ACCOUNT);
 		totalList.WriteFile();
 		cart = *new GoodsList;
 		ReloadLists();

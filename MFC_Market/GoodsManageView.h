@@ -2,6 +2,8 @@
 #include <afxext.h>
 #include "Resource.h"
 #include "Goods.h"
+#include "MainFrm.h"
+#include "Groups.h"
 
 class GoodsManageView : public CFormView
 {
