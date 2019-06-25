@@ -52,8 +52,11 @@ void LogoutView::OnBnClickedOk()//退出登陆
 		MessageBox(TEXT("请先登陆！"),TEXT("ERROR!"), MB_ICONEXCLAMATION);
 		return;
 	}
+	//((CMainFrame*)AfxGetMainWnd())->currentUser->Edit(0, TEXT("DEFAULTUSER"), TEXT("0"), TEXT("guest"), "0");
+	((CMainFrame*)AfxGetMainWnd())->currentUser->ACCOUNT = TEXT("DEFAULTUSER");
 	SetWindowTextA(AfxGetMainWnd()->GetSafeHwnd(), "未登陆 - MFC_Market_Management");
 	MessageBox(TEXT("登出成功！"));
+	::PostMessage(AfxGetMainWnd()->GetSafeHwnd(), EDIT_LOGIN, EDIT_LOGIN, 0);
 	// TODO: 在此添加控件通知处理程序代码
 }
 

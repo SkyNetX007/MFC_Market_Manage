@@ -19,4 +19,7 @@ public:
 	enum { IDD = IDD_LOGIN };
 	DECLARE_MESSAGE_MAP()
 	afx_msg void OnBnClickedOk();
+	
+public:
+	virtual void OnInitialUpdate();
 };

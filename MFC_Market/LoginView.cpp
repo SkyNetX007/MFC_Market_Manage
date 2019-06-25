@@ -98,6 +98,19 @@ void LoginView::OnBnClickedOk()
 		CString Msg=TEXT("用户 ");
 		Msg.Append(((CMainFrame*)AfxGetMainWnd())->currentUser->ACCOUNT);
 		Msg.Append(TEXT(" 登陆成功！"));
+		::PostMessage(AfxGetMainWnd()->GetSafeHwnd(), EDIT_LOGOUT, EDIT_LOGOUT, 0);
 		MessageBox(Msg,TEXT("Sign In"));
+	}
+}
+
+
+
+void LoginView::OnInitialUpdate()
+{
+	CFormView::OnInitialUpdate();
+	if (((CMainFrame*)AfxGetMainWnd())->currentUser->ACCOUNT != TEXT("DEFAULTUSER"))
+	{
+		MessageBox(TEXT("请先退出!"));
+		::PostMessage(AfxGetMainWnd()->GetSafeHwnd(), EDIT_LOGOUT, EDIT_LOGOUT, 0);
 	}
 }

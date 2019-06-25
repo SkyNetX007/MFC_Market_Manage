@@ -4,6 +4,7 @@
 #include "Groups.h"
 #include <string>
 #include <fstream>
+#include "MainFrm.h"
 
 class UsersManageView : public CFormView
 {

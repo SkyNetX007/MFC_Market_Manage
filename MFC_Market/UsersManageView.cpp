@@ -188,7 +188,11 @@ void UsersManageView::OnCbnSelchangeUserslist()
 void UsersManageView::OnInitialUpdate()
 {
 	CFormView::OnInitialUpdate();
-
+	if (((CMainFrame*)AfxGetMainWnd())->currentUser->GroupType != TEXT("admin"))
+	{
+		MessageBox(TEXT("Permission denied!"));
+		::PostMessage(AfxGetMainWnd()->GetSafeHwnd(), EDIT_LOGIN, EDIT_LOGIN, 0);
+	}
 	currentList.ReadFile();
 	listBox = (CComboBox*)GetDlgItem(IDC_USERSLIST);
 
