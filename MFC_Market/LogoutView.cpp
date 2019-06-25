@@ -7,6 +7,29 @@ using namespace std;
 
 IMPLEMENT_DYNCREATE(LogoutView, CFormView)
 
+char* FindBetween(char* input, int length, char start, char end)
+{
+	char* result = new char[length], current = 0;
+	int resultLength = 0;
+	bool read = 0;
+	for (int i = 0; i < length; i++)
+	{
+		current = input[i];
+		if (current == end || current == 0)
+			break;
+		if (read)
+		{
+			result[resultLength] = current;
+			resultLength++;
+		}
+		if (current == start)
+			read = 1;
+	}
+	result[resultLength] = 0;
+	return result;
+}
+
+
 LogoutView::LogoutView()
 	: CFormView(LogoutView::IDD)
 {
@@ -43,12 +66,8 @@ void LogoutView::OnBnClickedOk2()//ÐÞ¸ÄÃÜÂë
 		MessageBox(TEXT("ÇëÏÈµÇÂ½£¡"), TEXT("ERROR!"), MB_ICONEXCLAMATION);
 		return;
 	}
-	CString Username;/*
-	Username = CStringA(strTitle.c_str());
-	int begin = Username.Find(TEXT("£º"));
-	int end = Username.Find(TEXT(" ["));
-	Username = Username.Mid(begin+1, end);*/
-	string tmp=strTitle.substr(strTitle.find("£º")+2, strTitle.find("["));
+	CString Username;
+	Username = FindBetween(title, 65, '£º', ' ');
 	
 	CString passwd1, passwd2;
 	GetDlgItemText(IDC_EDIT3, passwd1);
@@ -61,6 +80,23 @@ void LogoutView::OnBnClickedOk2()//ÐÞ¸ÄÃÜÂë
 	UsersList currentList;
 	currentList.ReadFile();
 	list<ACCESS>::iterator it = currentList.Find(Username);
+	string Password = CStringA(passwd1);
+	string buf = "..\\etc\\md5.exe " + Password;
+	system(buf.c_str());
+	fstream cache("..\\MFC_Market\\cache");
+	if (!cache.is_open())
+	{
+		//exit(1);
+	}
+	char tmp[33] = "\0";
+	cache >> tmp;
+	cache.close();
+	DeleteFile(TEXT("..\\MFC_Market\\cache"));
+
+	string md5_cache = tmp;
+	it->PASSWORD_MD5 = md5_cache;
+	currentList.WriteFile();
+
 	SetDlgItemText(IDC_EDIT3, TEXT(""));
 	SetDlgItemText(IDC_EDIT4, TEXT(""));
 	MessageBox(TEXT("ÃÜÂëÐÞ¸Ä³É¹¦£¡"));

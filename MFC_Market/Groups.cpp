@@ -46,7 +46,6 @@ void UsersList::WriteFile()
 {
 	FILE* file = fopen(_ACCOUNT_LIST_FILE, "w+");
 	string tmpUsername, tmpCMT, tmpGroupType;
-	ACCESS temp;
 
 	if (!file)
 		return;
@@ -54,7 +53,7 @@ void UsersList::WriteFile()
 	for (list<ACCESS>::iterator it = content.begin(); tempLength > 0; it++)
 	{
 		tmpUsername = CStringA(it->ACCOUNT), tmpCMT = CStringA(it->COMMENT), tmpGroupType = CStringA(it->GroupType);
-		fprintf(file, "%d%s%s%s%s", temp.UID, tmpUsername.c_str(), tmpCMT.c_str(), tmpGroupType.c_str(), temp.PASSWORD_MD5);
+		fprintf(file, "%d %s %s %s %s\n", it->UID, tmpUsername.c_str(), tmpCMT.c_str(), tmpGroupType.c_str(), it->PASSWORD_MD5.c_str());
 		tempLength--;
 	}
 	fclose(file);
