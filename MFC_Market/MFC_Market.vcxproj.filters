@@ -63,6 +63,9 @@
     <ClInclude Include="Groups.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="UsersManageView.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MFC_Market.cpp">
@@ -102,6 +105,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Groups.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="UsersManageView.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

@@ -3,6 +3,7 @@
 #include "Resource.h"
 #include "Groups.h"
 #include <fstream>
+#include <string>
 
 class LoginView : public CFormView
 {
