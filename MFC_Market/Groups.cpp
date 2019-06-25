@@ -1,8 +1,9 @@
 #include "pch.h"
 #include "Groups.h"
+
 #pragma warning(disable:4996)
 
-void ACCESS::Edit(int _UID, CString _ACCOUNT, CString _COMMENT, CString _GroupType, string _PASSWORD_MD5)
+ACCESS::ACCESS(int _UID, CString _ACCOUNT, CString _COMMENT, CString _GroupType, string _PASSWORD_MD5)
 {
 	UID = _UID;
 	ACCOUNT = _ACCOUNT;
@@ -11,17 +12,33 @@ void ACCESS::Edit(int _UID, CString _ACCOUNT, CString _COMMENT, CString _GroupTy
 	PASSWORD_MD5 = _PASSWORD_MD5;
 }
 
+void ACCESS::Edit(int _UID, CString _ACCOUNT, CString _COMMENT, CString _GroupType, bool DoChangePassword, string _PASSWORD_MD5)
+{
+	UID = _UID;
+	ACCOUNT = _ACCOUNT;
+	COMMENT = _COMMENT;
+	GroupType = _GroupType;
+	if (DoChangePassword)
+	{
+		PASSWORD_MD5 = _PASSWORD_MD5;
+	}
+}
+
 void UsersList::ReadFile()
 {
 	FILE* file = fopen(_ACCOUNT_LIST_FILE, "r+");
 	ACCESS temp;
-	//char tmpUsername[33] = "\0", tmpCMT[100] = "\0", tmpGroupType[9] = "guest";
+	char tmpUsername[33] = "\0", tmpCMT[100] = "\0", tmpGroupType[9] = "guest", tmpPsd[33] = "\0";
 	if (!file) {
 		return;
 	}
 	while (!feof(file))
 	{
-		fscanf(file, "%d:%s:%s:%s:%s", temp.UID, temp.ACCOUNT, temp.COMMENT, temp.GroupType, temp.PASSWORD_MD5);
+		fscanf(file, "%d%s%s%s%s", &temp.UID, tmpUsername, tmpCMT, tmpGroupType, tmpPsd);
+		temp.ACCOUNT = tmpUsername;
+		temp.COMMENT = tmpCMT;
+		temp.GroupType = tmpGroupType;
+		temp.PASSWORD_MD5 = tmpPsd;
 		content.push_back(temp);
 		length++;
 	}
@@ -32,7 +49,6 @@ void UsersList::WriteFile()
 {
 	FILE* file = fopen(_ACCOUNT_LIST_FILE, "w+");
 	string tmpUsername, tmpCMT, tmpGroupType;
-	ACCESS temp;
 
 	if (!file)
 		return;
@@ -40,7 +56,7 @@ void UsersList::WriteFile()
 	for (list<ACCESS>::iterator it = content.begin(); tempLength > 0; it++)
 	{
 		tmpUsername = CStringA(it->ACCOUNT), tmpCMT = CStringA(it->COMMENT), tmpGroupType = CStringA(it->GroupType);
-		fprintf(file, "%d:%s:%s:%s:%s", temp.UID, tmpUsername.c_str(), tmpCMT.c_str(), tmpGroupType.c_str(), temp.PASSWORD_MD5);
+		fprintf(file, "%d %s %s %s %s\n", it->UID, tmpUsername.c_str(), tmpCMT.c_str(), tmpGroupType.c_str(), it->PASSWORD_MD5.c_str());
 		tempLength--;
 	}
 	fclose(file);
@@ -59,7 +75,8 @@ void UsersList::Delete(list<ACCESS>::iterator _Account)
 void UsersList::Add(int _UID, CString _ACCOUNT, CString _COMMENT, CString _GroupType, string _PASSWORD_MD5)
 {
 	ACCESS newACCOUNT;
-	newACCOUNT.Edit(_UID, _ACCOUNT, _COMMENT, _GroupType, _PASSWORD_MD5);
+	bool DoChangePassword = 1;
+	newACCOUNT.Edit(_UID, _ACCOUNT, _COMMENT, _GroupType, DoChangePassword, _PASSWORD_MD5);
 	content.push_back(newACCOUNT);
 	length++;
 }
@@ -75,12 +92,24 @@ list<ACCESS>::iterator UsersList::Find(CString _Username)
 	int tempLength = length;
 	while (1)
 	{
+		if (tempLength == 0)
+			return content.end();
 		if (it->ACCOUNT == _Username)
-			break;
-		if (tempLength < 0)
-			break;
+			return it;
 		it++, tempLength--;
 	}
-	if (length >= 0)
-		return it;
+}
+
+list<ACCESS>::iterator UsersList::FindUID(CString _UID)
+{
+	list<ACCESS>::iterator it = content.begin();
+	int tempLength = length;
+	while (1)
+	{
+		if (tempLength == 0)
+			return content.end();
+		if (it->UID == _UID)
+			return it;
+		it++, tempLength--;
+	}
 }
