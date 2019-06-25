@@ -30,7 +30,7 @@ class GoodsList
 
 public:
 	void ReadFile();
-	void WriteFile(int receipt = 0);
+	void WriteFile(int receipt = 0,CString userName=TEXT("\0");
 
 	list<Goods>::iterator getFirstGoods() { return content.begin(); }
 	list<Goods>::iterator getLastGoods() { return --content.end(); }

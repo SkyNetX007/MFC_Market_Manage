@@ -1,6 +1,8 @@
 #pragma once
 #include <afxext.h>
 #include "resource.h"
+#include "Groups.h"
+#include "MainFrm.h"
 #include "Goods.h"
 
 class PurchaseView : public CFormView
