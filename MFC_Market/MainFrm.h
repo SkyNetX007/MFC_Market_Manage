@@ -4,6 +4,8 @@
 
 #pragma once
 
+#include "Groups.h"
+
 #define EDIT_LOGIN (WM_USER+100)
 #define EDIT_LOGOUT (WM_USER+101)
 #define EDIT_USERS_MANAGEMENT (WM_USER+102)
@@ -22,6 +24,7 @@ protected: // 仅从序列化创建
 
 // 特性
 public:
+	ACCESS* currentUser = new ACCESS;
 
 // 操作
 public:
