@@ -12,13 +12,16 @@ ACCESS::ACCESS(int _UID, CString _ACCOUNT, CString _COMMENT, CString _GroupType,
 	PASSWORD_MD5 = _PASSWORD_MD5;
 }
 
-void ACCESS::Edit(int _UID, CString _ACCOUNT, CString _COMMENT, CString _GroupType, string _PASSWORD_MD5)
+void ACCESS::Edit(int _UID, CString _ACCOUNT, CString _COMMENT, CString _GroupType, bool DoChangePassword, string _PASSWORD_MD5)
 {
 	UID = _UID;
 	ACCOUNT = _ACCOUNT;
 	COMMENT = _COMMENT;
 	GroupType = _GroupType;
-	PASSWORD_MD5 = _PASSWORD_MD5;
+	if (DoChangePassword)
+	{
+		PASSWORD_MD5 = _PASSWORD_MD5;
+	}
 }
 
 void UsersList::ReadFile()
@@ -72,7 +75,8 @@ void UsersList::Delete(list<ACCESS>::iterator _Account)
 void UsersList::Add(int _UID, CString _ACCOUNT, CString _COMMENT, CString _GroupType, string _PASSWORD_MD5)
 {
 	ACCESS newACCOUNT;
-	newACCOUNT.Edit(_UID, _ACCOUNT, _COMMENT, _GroupType, _PASSWORD_MD5);
+	bool DoChangePassword = 1;
+	newACCOUNT.Edit(_UID, _ACCOUNT, _COMMENT, _GroupType, DoChangePassword, _PASSWORD_MD5);
 	content.push_back(newACCOUNT);
 	length++;
 }
@@ -91,6 +95,20 @@ list<ACCESS>::iterator UsersList::Find(CString _Username)
 		if (tempLength == 0)
 			return content.end();
 		if (it->ACCOUNT == _Username)
+			return it;
+		it++, tempLength--;
+	}
+}
+
+list<ACCESS>::iterator UsersList::FindUID(CString _UID)
+{
+	list<ACCESS>::iterator it = content.begin();
+	int tempLength = length;
+	while (1)
+	{
+		if (tempLength == 0)
+			return content.end();
+		if (it->UID == _UID)
 			return it;
 		it++, tempLength--;
 	}

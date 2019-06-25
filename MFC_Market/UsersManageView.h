@@ -3,6 +3,7 @@
 #include "Resource.h"
 #include "Groups.h"
 #include <string>
+#include <fstream>
 
 class UsersManageView : public CFormView
 {
@@ -33,5 +34,6 @@ public:
 	afx_msg void OnCbnSelchangeChangedAccess();
 	virtual void OnInitialUpdate();
 	//	virtual void OnActivateView(BOOL bActivate, CView* pActivateView, CView* pDeactiveView);
+	afx_msg void OnCbnSelchangeUserslist();
 };
 

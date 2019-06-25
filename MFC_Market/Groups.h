@@ -20,7 +20,7 @@ public:
 
 	ACCESS(int _UID, CString _ACCOUNT, CString _COMMENT, CString _GroupType = TEXT("guest"), string _PASSWORD_MD5 = 0);
 	ACCESS() { }
-	void Edit(int _UID, CString _ACCOUNT, CString _COMMENT, CString _GroupType = TEXT("guest"), string _PASSWORD_MD5 = 0);
+	void Edit(int _UID, CString _ACCOUNT, CString _COMMENT, CString _GroupType = TEXT("guest"), bool DoChangePassword = 1, string _PASSWORD_MD5 = 0);
 };
 
 class UsersList
@@ -36,7 +36,8 @@ public:
 	list<ACCESS>::iterator getLastUser() { return --content.end(); }
 	list<ACCESS>::iterator getEnd() { return content.end(); }
 	list<ACCESS>::iterator Find(CString _Username);
-	void Sort(CString mode);
+	list<ACCESS>::iterator FindUID(CString _UID);
+	void Sort(CString accrod);
 	void Delete(list<ACCESS>::iterator _Account);
 	void Add(int _UID, CString _ACCOUNT, CString _COMMENT, CString _GroupType = TEXT("guest"), string _PASSWORD_MD5 = 0);
 	int GetLength();
