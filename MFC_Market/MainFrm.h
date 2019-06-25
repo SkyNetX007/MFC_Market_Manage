@@ -5,10 +5,6 @@
 #pragma once
 #include "Groups.h"
 
-#include "Groups.h"
-
-#include "Groups.h"
-
 #define EDIT_LOGIN (WM_USER+100)
 #define EDIT_LOGOUT (WM_USER+101)
 #define EDIT_USERS_MANAGEMENT (WM_USER+102)
