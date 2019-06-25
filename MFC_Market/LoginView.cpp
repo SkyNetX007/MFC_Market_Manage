@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "LoginView.h"
 //#include "md5.h"
-#include <string>
 
 // LoginView
 
@@ -92,13 +91,13 @@ void LoginView::OnBnClickedOk()
 		}
 		
 		*currentUser = *it;
-		string title = "已登录用户： " + CStringA(currentUser->ACCOUNT) + " [" + CStringA(currentUser->GroupType) + "]";
+		string title = "已登陆用户：" + CStringA(currentUser->ACCOUNT) + " [" + CStringA(currentUser->GroupType) + "]";
 		SetDlgItemText(IDC_EDIT1, TEXT(""));
 		SetDlgItemText(IDC_EDIT2, TEXT(""));
 		SetWindowTextA(AfxGetMainWnd()->GetSafeHwnd(), title.c_str());
 		CString Msg=TEXT("用户 ");
 		Msg.Append(currentUser->ACCOUNT);
-		Msg.Append(TEXT(" 登录成功！"));
+		Msg.Append(TEXT(" 登陆成功！"));
 		MessageBox(Msg,TEXT("Sign In"));
 	}
 }

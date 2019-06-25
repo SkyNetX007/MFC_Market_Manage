@@ -1,6 +1,9 @@
 #pragma once
 #include <afxext.h>
 #include "Resource.h"
+#include <string>
+#include "Groups.h"
+
 class LogoutView : public CFormView
 {
 	DECLARE_DYNCREATE(LogoutView)
