@@ -109,7 +109,6 @@ void PurchaseView::OnBnClickedDeleteButton()
 		cart.Delete(it);
 		ReloadLists();
 	}
-	
 }
 
 void PurchaseView::OnBnClickedIncartButton()
@@ -165,7 +164,6 @@ void PurchaseView::OnBnClickedBuyButto()
 		cart = *new GoodsList;
 		ReloadLists();
 	}
-	
 }
 
 void PurchaseView::OnInitialUpdate()

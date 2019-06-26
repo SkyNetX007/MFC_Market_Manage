@@ -66,7 +66,7 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	m_wndStatusBar.SetIndicators(indicators, sizeof(indicators)/sizeof(UINT));
 
 	MoveWindow(0, 0, 800, 600);
-
+	SetIcon(AfxGetApp()->LoadIconW(IDI_APERTURE), 1);
 	return 0;
 }
 
