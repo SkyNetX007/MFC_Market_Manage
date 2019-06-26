@@ -113,3 +113,13 @@ list<ACCESS>::iterator UsersList::FindUID(CString _UID)
 		it++, tempLength--;
 	}
 }
+
+bool cstrIsalnum(CString str)
+{
+	for (int i = 0; i < str.GetLength(); i++)
+	{
+		if (!((str[i] > '0' && str[i] < '9') || (str[i] > 'a' && str[i] < 'z') || (str[i] > 'A' && str[i] < 'Z') || (str[i] == '_')))
+			return FALSE;
+	}
+	return TRUE;
+}

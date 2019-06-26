@@ -61,7 +61,7 @@ void UsersManageView::OnBnClickedAddButton()
 	string STRnewPsd = CStringA(newPsd);
 	int int_newUID = _ttoi(newUID);
 
-	if (newAccount.IsEmpty() || newComment.IsEmpty() || newGroupType.IsEmpty() || newUID.IsEmpty() || !(!newGroupType.Compare(TEXT("admin")) || !newGroupType.Compare(TEXT("user")) || !newGroupType.Compare(TEXT("guest"))))
+	if (newAccount.IsEmpty() || !cstrIsalnum(newAccount) || newComment.IsEmpty() || newGroupType.IsEmpty() || newUID.IsEmpty() || !(!newGroupType.Compare(TEXT("admin")) || !newGroupType.Compare(TEXT("user")) || !newGroupType.Compare(TEXT("guest"))))
 		MessageBox(TEXT("Insufficient input!"));
 	else {
 		list<ACCESS>::iterator it = currentList.FindUID(newUID);
@@ -115,7 +115,7 @@ void UsersManageView::OnBnClickedChangeButton()
 	string newPsd = CStringA(cstrPsd);
 	int int_newUID = _ttoi(cstrUID);
 
-	if (cstrAccount.IsEmpty() || cstrComment.IsEmpty() || cstrGroupType.IsEmpty() || cstrUID.IsEmpty() || !(!cstrGroupType.Compare(TEXT("admin")) || !cstrGroupType.Compare(TEXT("user")) || !cstrGroupType.Compare(TEXT("guest"))))
+	if (cstrAccount.IsEmpty() || !cstrIsalnum(cstrAccount) || cstrComment.IsEmpty() || cstrGroupType.IsEmpty() || cstrUID.IsEmpty() || !(!cstrGroupType.Compare(TEXT("admin")) || !cstrGroupType.Compare(TEXT("user")) || !cstrGroupType.Compare(TEXT("guest"))))
 		MessageBox(TEXT("Insufficient input!"));
 	else {
 		list<ACCESS>::iterator it = currentList.FindUID(cstrUID);
