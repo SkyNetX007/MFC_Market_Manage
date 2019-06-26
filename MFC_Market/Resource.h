@@ -40,6 +40,7 @@
 #define IDC_TITLE3                      1004
 #define IDC_EDIT4                       1004
 #define IDC_CHANGED_NAME                1005
+#define IDC_CHANGED_TYPE                1006
 #define IDC_CHANGED_PRICE               1007
 #define IDC_ADD_BUTTON                  1009
 #define IDC_NEWNAME                     1010
@@ -54,6 +55,8 @@
 #define IDC_LIST1                       1018
 #define IDC_SAVE_BUTTON                 1019
 #define IDC_CHANGED_DISCOUNT            1020
+#define IDC_NEWTYPE                     1021
+#define IDC_NEW_TYPE                    1021
 #define IDC_CART_LIST                   1025
 #define IDC_TOCART_BUTTON               1026
 #define IDC_GOODS_LIST                  1027
@@ -79,6 +82,7 @@
 #define IDC_CHANGED_UID                 1056
 #define IDC_CHANGED_COMMENT             1057
 #define IDC_CHANGED_PSD                 1058
+#define IDC_TYPE_CHECK                  1059
 
 // Next default values for new objects
 // 
@@ -86,7 +90,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        341
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1059
+#define _APS_NEXT_CONTROL_VALUE         1060
 #define _APS_NEXT_SYMED_VALUE           310
 #endif
 #endif

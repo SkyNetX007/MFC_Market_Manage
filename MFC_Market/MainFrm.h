@@ -24,6 +24,8 @@ protected: // 仅从序列化创建
 // 特性
 public:
 	ACCESS* currentUser = new ACCESS;
+	template<class T>
+	void SetLeftPage();
 
 // 操作
 public:

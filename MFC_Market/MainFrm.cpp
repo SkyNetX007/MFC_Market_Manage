@@ -189,66 +189,20 @@ BOOL CMainFrame::OnCreateClient(LPCREATESTRUCT lpcs, CCreateContext* pContext)
 LRESULT CMainFrame::OnEditChanges(WPARAM message, LPARAM lparam)
 {
 	switch (message) {
-	case EDIT_LOGIN: {
-		cContext.m_pNewViewClass = RUNTIME_CLASS(LoginView);
-		cContext.m_pCurrentFrame = this;
-		cContext.m_pLastView = (CFormView*)windowSplitter.GetPane(0, 1);
-		windowSplitter.DeleteView(0, 1);
-		windowSplitter.CreateView(0, 1, RUNTIME_CLASS(LoginView), CSize(500, 600), &cContext);
-		LoginView* newView = (LoginView*)windowSplitter.GetPane(0, 1);
-		windowSplitter.RecalcLayout();
-		newView->OnInitialUpdate();
-		windowSplitter.SetActivePane(0, 1);
-	}
-					 break;
-	case EDIT_LOGOUT: {
-		cContext.m_pNewViewClass = RUNTIME_CLASS(LogoutView);
-		cContext.m_pCurrentFrame = this;
-		cContext.m_pLastView = (CFormView*)windowSplitter.GetPane(0, 1);
-		windowSplitter.DeleteView(0, 1);
-		windowSplitter.CreateView(0, 1, RUNTIME_CLASS(LogoutView), CSize(500, 600), &cContext);
-		LogoutView* newView = (LogoutView*)windowSplitter.GetPane(0, 1);
-		windowSplitter.RecalcLayout();
-		newView->OnInitialUpdate();
-		windowSplitter.SetActivePane(0, 1);
-	}
+	case EDIT_LOGIN: 
+		SetLeftPage<LoginView>();
 		break;
-	case EDIT_GOODS_MANAGEMENT: {
-		cContext.m_pNewViewClass = RUNTIME_CLASS(GoodsManageView);
-		cContext.m_pCurrentFrame = this;
-		cContext.m_pLastView = (CFormView*)windowSplitter.GetPane(0, 1);
-		windowSplitter.DeleteView(0, 1);
-		windowSplitter.CreateView(0, 1, RUNTIME_CLASS(GoodsManageView), CSize(500, 600), &cContext);
-		GoodsManageView* newView = (GoodsManageView*)windowSplitter.GetPane(0, 1);
-		windowSplitter.RecalcLayout();
-		newView->OnInitialUpdate();
-		windowSplitter.SetActivePane(0, 1);
-	}
+	case EDIT_LOGOUT: 
+		SetLeftPage<LogoutView>();
 		break;
-	case EDIT_USERS_MANAGEMENT: {
-		cContext.m_pNewViewClass = RUNTIME_CLASS(UsersManageView);
-		cContext.m_pCurrentFrame = this;
-		cContext.m_pLastView = (CFormView*)windowSplitter.GetPane(0, 1);
-		windowSplitter.DeleteView(0, 1);
-		windowSplitter.CreateView(0, 1, RUNTIME_CLASS(UsersManageView), CSize(500, 600), &cContext);
-		UsersManageView* newView = (UsersManageView*)windowSplitter.GetPane(0, 1);
-		windowSplitter.RecalcLayout();
-		newView->OnInitialUpdate();
-		windowSplitter.SetActivePane(0, 1);
-	}
+	case EDIT_GOODS_MANAGEMENT: 
+		SetLeftPage<GoodsManageView>();
 		break;
-	case EDIT_PURCHASE: {
-		cContext.m_pNewViewClass = RUNTIME_CLASS(PurchaseView);
-		cContext.m_pCurrentFrame = this;
-		cContext.m_pLastView = (CFormView*)windowSplitter.GetPane(0, 1);
-		windowSplitter.DeleteView(0, 1);
-		windowSplitter.CreateView(0, 1, RUNTIME_CLASS(PurchaseView), CSize(500, 600), &cContext);
-		PurchaseView* newView = (PurchaseView*)windowSplitter.GetPane(0, 1);
-		windowSplitter.RecalcLayout();
-		newView->OnInitialUpdate();
-		windowSplitter.SetActivePane(0, 1);
-	}
-						break;
+	case EDIT_USERS_MANAGEMENT:
+		SetLeftPage<UsersManageView>();
+		break;
+	case EDIT_PURCHASE: 
+		SetLeftPage<PurchaseView>();
 		break;
 	case EDIT_RECEIPT_REFOUNDS:
 		break;
@@ -256,4 +210,18 @@ LRESULT CMainFrame::OnEditChanges(WPARAM message, LPARAM lparam)
 		break;
 	}
 	return 0;
+}
+
+template<class T>
+void CMainFrame::SetLeftPage()
+{
+	cContext.m_pNewViewClass = RUNTIME_CLASS(T);
+	cContext.m_pCurrentFrame = this;
+	cContext.m_pLastView = (CFormView*)windowSplitter.GetPane(0, 1);
+	windowSplitter.DeleteView(0, 1);
+	windowSplitter.CreateView(0, 1, RUNTIME_CLASS(T), CSize(500, 600), &cContext);
+	T* newView = (T*)windowSplitter.GetPane(0, 1);
+	windowSplitter.RecalcLayout();
+	newView->OnInitialUpdate();
+	windowSplitter.SetActivePane(0, 1);
 }

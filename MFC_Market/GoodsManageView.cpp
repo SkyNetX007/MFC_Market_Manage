@@ -55,6 +55,7 @@ void GoodsManageView::OnCbnSelchangeGoodslist()
 		SetDlgItemText(IDC_CHANGED_PRICE, priceStr);
 		SetDlgItemText(IDC_CHANGED_QUANTITY, stockStr);
 		SetDlgItemText(IDC_CHANGED_DISCOUNT, discountStr);
+		SetDlgItemText(IDC_CHANGED_TYPE, currentGoods->type);
 	}
 }
 
@@ -69,14 +70,15 @@ void GoodsManageView::OnCbnSelchangeGoodslist()
 
 void GoodsManageView::OnBnClickedAddButton()
 {
-	CString newName, newID, priceStr, stockStr;
+	CString newName, newID, priceStr, stockStr, typeStr;
 	double newPrice;
 	int newStock;
 	GetDlgItemText(IDC_NEWNAME, newName);
 	GetDlgItemText(IDC_NEWID, newID);
 	GetDlgItemText(IDC_NEWPRICE, priceStr);
 	GetDlgItemText(IDC_NEWQUANTITY, stockStr);
-	if (newName.IsEmpty() || newID.IsEmpty() || priceStr.IsEmpty() || stockStr.IsEmpty())
+	GetDlgItemText(IDC_NEW_TYPE, typeStr);
+	if (newName.IsEmpty() || newID.IsEmpty() || priceStr.IsEmpty() || stockStr.IsEmpty()||typeStr.IsEmpty())
 		MessageBox(TEXT("Insufficient input!"));
 	else {
 		list<Goods>::iterator it = currentList.FindID(newID);
@@ -87,12 +89,13 @@ void GoodsManageView::OnBnClickedAddButton()
 		}
 		newPrice = _ttof(priceStr);
 		newStock = _ttoi(stockStr);
-		currentList.Add(newName, newID, newPrice, newStock);
+		currentList.Add(newName, newID, newPrice, newStock,typeStr);
 		ReloadListBox();
 		SetDlgItemText(IDC_NEWNAME, NULL);
 		SetDlgItemText(IDC_NEWID, NULL);
 		SetDlgItemText(IDC_NEWPRICE, NULL);
 		SetDlgItemText(IDC_NEWQUANTITY, NULL);
+		SetDlgItemText(IDC_NEW_TYPE, NULL);
 	}
 	
 }
@@ -115,13 +118,14 @@ void GoodsManageView::OnBnClickedDeleteButton()
 
 void GoodsManageView::OnBnClickedChangeButton()
 {
-	CString cName, cID, cPrice, cDiscount, cStock;
+	CString cName, cID, cPrice, cDiscount, cStock, cType;
 	GetDlgItemText(IDC_CHANGED_NAME, cName);
 	GetDlgItemText(IDC_CHANGED_ID, cID);
 	GetDlgItemText(IDC_CHANGED_PRICE, cPrice);
 	GetDlgItemText(IDC_CHANGED_DISCOUNT, cDiscount);
 	GetDlgItemText(IDC_CHANGED_QUANTITY, cStock);
-	if (cName.IsEmpty() || cID.IsEmpty() || cPrice.IsEmpty() || cDiscount.IsEmpty() || cStock.IsEmpty()) {
+	GetDlgItemText(IDC_CHANGED_TYPE, cType);
+	if (cName.IsEmpty() || cID.IsEmpty() || cPrice.IsEmpty() || cDiscount.IsEmpty() || cStock.IsEmpty()||cType.IsEmpty()) {
 		MessageBox(TEXT("Insuffient input!"));
 	}
 	else {
@@ -135,7 +139,7 @@ void GoodsManageView::OnBnClickedChangeButton()
 		int iStock;
 		dPrice = _ttof(cPrice), dDiscount = _ttof(cDiscount);
 		iStock = _ttoi(cStock);
-		currentGoods->Edit(cName, cID, dPrice, dDiscount, iStock);
+		currentGoods->Edit(cName, cID, dPrice, dDiscount, iStock, cType);
 		ReloadListBox();
 	}
 }
