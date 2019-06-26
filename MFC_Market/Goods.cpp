@@ -45,7 +45,7 @@ void GoodsList::ReadFile()
 	fclose(file);
 }
 
-void GoodsList::WriteFile(int receipt) 
+void GoodsList::WriteFile(int receipt,CString username) 
 {
 	FILE* file;
 	if (receipt)
@@ -83,8 +83,10 @@ void GoodsList::WriteFile(int receipt)
 		}
 		tempLength--;
 	}
-	if (receipt)
+	if (receipt) {
 		fprintf(file, "\nTotal: %.3lf", total);
+		fprintf(file, "\n\nUser: %S", username);
+	}
 	fclose(file);
 }
 

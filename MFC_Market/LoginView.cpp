@@ -62,7 +62,8 @@ void LoginView::OnBnClickedOk()
 	//string psdMD5;
 	GetDlgItemText(IDC_EDIT1, inUsername);
 	GetDlgItemText(IDC_EDIT2, inPasswd);
-	if (inUsername.IsEmpty())
+
+	if (inUsername.IsEmpty() || !cstrIsalnum(inUsername))
 	{
 		MessageBox(TEXT("Please input valid username!"),TEXT("ERROR!"), MB_ICONEXCLAMATION);
 		return;
