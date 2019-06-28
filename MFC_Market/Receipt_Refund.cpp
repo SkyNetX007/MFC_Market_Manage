@@ -55,7 +55,7 @@ void Receipt_Refund::OnInitialUpdate()
 	//SetTimer(1, 1000, NULL);         //启动定时器
 
 	//列表控件的使用
-	CString title[] = { TEXT("名称"),TEXT("数量"),TEXT("单价") };
+	CString title[] = { TEXT("名称"),TEXT("单价"),TEXT("数量") };
 
 	for (int i = 0; i < 3; i++)
 	{
