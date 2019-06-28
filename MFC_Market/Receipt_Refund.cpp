@@ -73,7 +73,7 @@ void Receipt_Refund::OnBnClickedButton1()
 	fstream file;
 	file.open("../etc/Last_Receipt.txt");
 	CString tempName = TEXT("\0"), tempPrice = TEXT("\0"), tempNum = TEXT("\0");
-	char tempChar = 0, tempChar2, tempT[128];
+	char tempChar = 0, tempT[128];
 	int tabNum = 0;
 	string line; int time = 0;
 	int i = 0;
