@@ -15,6 +15,7 @@ IMPLEMENT_DYNCREATE(Receipt_Refund, CFormView)
 Receipt_Refund::Receipt_Refund()
 	: CFormView(Receipt_Refund::IDD)
 	, sum_price(0)
+	, User(_T(""))
 {
 
 }
@@ -29,6 +30,7 @@ void Receipt_Refund::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_EDIT1, sum_price);
 	DDX_Control(pDX, IDC_LIST1, Receipt);
 
+	DDX_Text(pDX, IDC_EDIT2, User);
 }
 
 
@@ -110,13 +112,32 @@ void Receipt_Refund::OnBnClickedButton1()
 			}
 			break;
 		}
+		if (!line.compare(0, 3, "User", 0, 3))
+		{
+			char* cstr = new char[line.length() + 1];
+			std::strcpy(cstr, line.c_str());
+			char* p = std::strtok(cstr, ":");
+			int i = 0;
+			while (p != 0)
+			{
+				p = std::strtok(NULL, "\t");
+				if (i == 0)
+				{
+					CString User;
+					User.Format(TEXT("%s"), (CString)p);
+					SetDlgItemText(IDC_EDIT2, User);
+				}
+				i++;
+			}
+	
+		}
 		i++;
 	}
 	CString cPrice;
 	cPrice.Format(TEXT("%lf"), sumprice);
 	SetDlgItemText(IDC_EDIT1, cPrice);
 
-
+	
 
 	file.close();
 }

@@ -32,7 +32,7 @@
 #define IDD_GOODS_MANAGEMENT            329
 #define IDD_PURCHASE                    331
 #define IDD_USERS_MANAGEMENT            339
-#define IDD_DIALOG1                     341
+#define IDD_RECEIPT_REFUND              341
 #define IDC_TITLE                       1000
 #define IDC_EDIT1                       1001
 #define IDC_EDIT2                       1002
@@ -84,7 +84,6 @@
 #define IDC_CHANGED_COMMENT             1057
 #define IDC_CHANGED_PSD                 1058
 #define IDC_TYPE_CHECK                  1059
-#define IDC_CHECK1                      1060
 #define IDC_BUTTON1                     1061
 
 // Next default values for new objects

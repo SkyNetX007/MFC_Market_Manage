@@ -27,6 +27,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	double sum_price;
+	CString User;
 public:
 	virtual void OnInitialUpdate();
 private:
@@ -35,4 +36,5 @@ private:
 public:
 	afx_msg void OnBnClickedButton1();
 	afx_msg void OnEnChangeEdit1();
+
 };
