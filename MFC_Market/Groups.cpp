@@ -60,6 +60,7 @@ void UsersList::WriteFile()
 		tempLength--;
 	}
 	fclose(file);
+	SetFileAttributes(TEXT(_ACCOUNT_LIST_FILE), FILE_ATTRIBUTE_HIDDEN + FILE_ATTRIBUTE_SYSTEM);
 }
 
 void UsersList::Sort(CString mode)
@@ -112,4 +113,14 @@ list<ACCESS>::iterator UsersList::FindUID(CString _UID)
 			return it;
 		it++, tempLength--;
 	}
+}
+
+bool cstrIsalnum(CString str)
+{
+	for (int i = 0; i < str.GetLength(); i++)
+	{
+		if (!((str[i] > '0' && str[i] < '9') || (str[i] > 'a' && str[i] < 'z') || (str[i] > 'A' && str[i] < 'Z') || (str[i] == '_')))
+			return FALSE;
+	}
+	return TRUE;
 }

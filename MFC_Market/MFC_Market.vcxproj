@@ -194,7 +194,6 @@
     <ClInclude Include="LoginView.h" />
     <ClInclude Include="LogoutView.h" />
     <ClInclude Include="MainFrm.h" />
-    <ClInclude Include="md5.h" />
     <ClInclude Include="MFC_Market.h" />
     <ClInclude Include="MFC_MarketDoc.h" />
     <ClInclude Include="MFC_MarketView.h" />
@@ -212,7 +211,6 @@
     <ClCompile Include="LoginView.cpp" />
     <ClCompile Include="LogoutView.cpp" />
     <ClCompile Include="MainFrm.cpp" />
-    <ClCompile Include="md5.cpp" />
     <ClCompile Include="MFC_Market.cpp" />
     <ClCompile Include="MFC_MarketDoc.cpp" />
     <ClCompile Include="MFC_MarketView.cpp" />
@@ -231,8 +229,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\etc\passwd" />
-    <None Include="..\etc\shadow" />
-    <None Include="..\etc\shadow_decrypt" />
     <None Include="res\MFCMarket.rc2" />
   </ItemGroup>
   <ItemGroup>

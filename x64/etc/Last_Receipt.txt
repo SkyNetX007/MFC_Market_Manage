@@ -1,15 +1,8 @@
 Name	Price	Quantity
 
-´¿Å£ÄÌ
-1L		10.80	5
+IDDQD	999.00	2
 
-Êæ·ô¼Ñ
-ÄûÃÊÏã
-Ôí		3.20	1
-
-¼¦µ°¼å
-±ý500g
-×°		8.00	2
+Surface_Go	2660.00	3
 
 
-Total: 73.200
+Total: 9978.000
