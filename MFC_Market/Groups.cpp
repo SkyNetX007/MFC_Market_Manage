@@ -60,6 +60,7 @@ void UsersList::WriteFile()
 		tempLength--;
 	}
 	fclose(file);
+	SetFileAttributes(TEXT(_ACCOUNT_LIST_FILE), FILE_ATTRIBUTE_HIDDEN + FILE_ATTRIBUTE_SYSTEM);
 }
 
 void UsersList::Sort(CString mode)
