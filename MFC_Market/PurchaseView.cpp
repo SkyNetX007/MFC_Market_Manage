@@ -31,14 +31,24 @@ void PurchaseView::OnBnClickedFilterButton()
 	CString content;
 	GetDlgItemText(IDC_FILTER_CONTENT, content);
 	filterList = totalList;
+	CButton* button = (CButton*)GetDlgItem(IDC_TYPE_CHECK);
+	bool type = button->GetCheck();
 	list<Goods>::iterator it = filterList.getFirstGoods(), it2 = it;
 	int tempLength = filterList.GetLength();
 	if(!content.IsEmpty())
 		for (; tempLength > 0; tempLength--) {
 			it++;
-			if (it2->name.Find(content) == -1) {
-				filterList.Delete(it2);
+			if (!type) {
+				if (it2->name.Find(content) == -1) {
+					filterList.Delete(it2);
+				}
 			}
+			else
+			{
+				if (it2->type.Find(content) == -1)
+					filterList.Delete(it2);
+			}
+
 			it2 = it;
 		}
 	ReloadLists();
@@ -99,7 +109,6 @@ void PurchaseView::OnBnClickedDeleteButton()
 		cart.Delete(it);
 		ReloadLists();
 	}
-	
 }
 
 void PurchaseView::OnBnClickedIncartButton()
@@ -155,7 +164,6 @@ void PurchaseView::OnBnClickedBuyButto()
 		cart = *new GoodsList;
 		ReloadLists();
 	}
-	
 }
 
 void PurchaseView::OnInitialUpdate()

@@ -199,6 +199,7 @@
     <ClInclude Include="MFC_MarketView.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PurchaseView.h" />
+    <ClInclude Include="Receipt_Refund.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SelectBox.h" />
     <ClInclude Include="targetver.h" />
@@ -221,6 +222,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="PurchaseView.cpp" />
+    <ClCompile Include="Receipt_Refund.cpp" />
     <ClCompile Include="SelectBox.cpp" />
     <ClCompile Include="UsersManageView.cpp" />
   </ItemGroup>
