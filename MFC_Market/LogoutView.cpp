@@ -54,6 +54,7 @@ void LogoutView::OnBnClickedOk()//ÍË³öµÇÂ½
 	}
 	//((CMainFrame*)AfxGetMainWnd())->currentUser->Edit(0, TEXT("DEFAULTUSER"), TEXT("0"), TEXT("guest"), "0");
 	((CMainFrame*)AfxGetMainWnd())->currentUser->ACCOUNT = TEXT("DEFAULTUSER");
+	((CMainFrame*)AfxGetMainWnd())->currentUser->GroupType = TEXT("guest");
 	SetWindowTextA(AfxGetMainWnd()->GetSafeHwnd(), "Î´µÇÂ½ - MFC_Market_Management");
 	MessageBox(TEXT("µÇ³ö³É¹¦£¡"));
 	::PostMessage(AfxGetMainWnd()->GetSafeHwnd(), EDIT_LOGIN, EDIT_LOGIN, 0);
