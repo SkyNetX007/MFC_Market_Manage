@@ -137,7 +137,9 @@ void Receipt_Refund::OnBnClickedButton1()
 	cPrice.Format(TEXT("%lf"), sumprice);
 	SetDlgItemText(IDC_EDIT1, cPrice);
 
-	
+	CWnd* cSeBkBtnMy = GetDlgItem(IDC_BUTTON1);
+
+	cSeBkBtnMy->EnableWindow(false);
 
 	file.close();
 }

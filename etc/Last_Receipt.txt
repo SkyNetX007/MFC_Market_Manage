@@ -1,8 +1,8 @@
 Name	Price	Quantity
 
-Surface_Go	2660.00	1
+Soap	3.20	1
 
 
-Total: 2660.000
+Total: 3.200
 
 User: DEFAULTUSER
