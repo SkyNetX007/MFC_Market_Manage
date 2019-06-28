@@ -2,6 +2,9 @@ Name	Price	Quantity
 
 Soap	3.20	1
 
+IDDQD	999.00	2
+
+Surface_Go	2660.00	3
 
 Total: 3.200
 
