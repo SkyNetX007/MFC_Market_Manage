@@ -63,7 +63,7 @@ void SelectBox::OnInitialUpdate()
 	controlTree->InsertItem(TEXT("USERS_MANAGEMENT"), 1, 1, NULL);
 	controlTree->InsertItem(TEXT("GOODS_MANAGEMENT"), 1, 1, NULL);
 	controlTree->InsertItem(TEXT("PURCHASE"), 6, 6, NULL);
-	controlTree->InsertItem(TEXT("RECEIPT & REFOUNDS"), 5, 5, NULL);
+	controlTree->InsertItem(TEXT("RECEIPT_REFUND"), 5, 5, NULL);
 
 	// TODO: 在此添加专用代码和/或调用基类
 }
@@ -93,7 +93,7 @@ void SelectBox::OnTvnSelchanged(NMHDR* pNMHDR, LRESULT* pResult)
 	else if (title == TEXT("PURCHASE")) {
 		::PostMessage(AfxGetMainWnd()->GetSafeHwnd(), EDIT_PURCHASE, EDIT_PURCHASE, 0);
 	}
-	else if (title == TEXT("RECEIPT & REFOUNDS")) {
-		::PostMessage(AfxGetMainWnd()->GetSafeHwnd(), EDIT_RECEIPT_REFOUNDS, EDIT_RECEIPT_REFOUNDS, 0);
+	else if (title == TEXT("RECEIPT_REFUND")) {
+		::PostMessage(AfxGetMainWnd()->GetSafeHwnd(), EDIT_RECEIPT_REFUND, EDIT_RECEIPT_REFUND, 0);
 	}
 }

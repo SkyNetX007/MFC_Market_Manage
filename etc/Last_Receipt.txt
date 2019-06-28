@@ -1,8 +1,8 @@
 Name	Price	Quantity
 
-IDDQD	999.00	2
-
-Surface_Go	2660.00	3
+Surface_Go	2660.00	1
 
 
-Total: 9978.000
+Total: 2660.000
+
+User: DEFAULTUSER

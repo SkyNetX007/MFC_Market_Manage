@@ -12,6 +12,7 @@
 #include "GoodsManageView.h"
 #include "UsersManageView.h"
 #include "PurchaseView.h"
+#include "Receipt_Refund.h"
 #include "MainFrm.h"
 
 #ifdef _DEBUG
@@ -29,7 +30,7 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
 	ON_MESSAGE(EDIT_USERS_MANAGEMENT, OnEditChanges)
 	ON_MESSAGE(EDIT_GOODS_MANAGEMENT, OnEditChanges)
 	ON_MESSAGE(EDIT_PURCHASE, OnEditChanges)
-	ON_MESSAGE(EDIT_RECEIPT_REFOUNDS, OnEditChanges)
+	ON_MESSAGE(EDIT_RECEIPT_REFUND, OnEditChanges)
 	ON_COMMAND_RANGE(ID_VIEW_APPLOOK_WIN_2000, ID_VIEW_APPLOOK_WINDOWS_7, &CMainFrame::OnApplicationLook)
 	ON_UPDATE_COMMAND_UI_RANGE(ID_VIEW_APPLOOK_WIN_2000, ID_VIEW_APPLOOK_WINDOWS_7, &CMainFrame::OnUpdateApplicationLook)
 END_MESSAGE_MAP()
@@ -204,7 +205,8 @@ LRESULT CMainFrame::OnEditChanges(WPARAM message, LPARAM lparam)
 	case EDIT_PURCHASE: 
 		SetLeftPage<PurchaseView>();
 		break;
-	case EDIT_RECEIPT_REFOUNDS:
+	case EDIT_RECEIPT_REFUND:
+		SetLeftPage<Receipt_Refund>();
 		break;
 	default:
 		break;
